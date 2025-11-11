@@ -94,7 +94,7 @@ a:hover {
     text-align: center;
 }
 
-/* Header and Navigation */
+
 header {
     background-color: var(--green); 
     color: var(--white);
@@ -133,7 +133,7 @@ header .container {
     color: var(--blue-dark);
 }
 
-/* Hamburger Menu for Mobile */
+
 .hamburger {
     display: none;
     background: none;
