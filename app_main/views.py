@@ -1,9 +1,8 @@
-# app_main/views.py
-
 from django.shortcuts import render
 
 def index(request):
-    return render(request, 'index.html', {})
+    # O caminho deve ser simples se o arquivo estiver em /templates/
+    return render(request, 'index.html', {}) 
 
 def sobre(request):
     return render(request, 'sobre.html', {})

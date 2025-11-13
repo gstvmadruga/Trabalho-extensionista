@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 
+import os 
+from pathlib import Path
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -59,14 +62,23 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+import os
+from pathlib import Path
 ROOT_URLCONF = 'Projeto_Pedalar.urls'
+
+# Projeto_Pedalar/settings.py (CORREÇÃO DE SINTAXE E LÓGICA)
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],  # pode ficar vazio
-        'APP_DIRS': True,  # deve ser True para procurar templates dentro de apps
+        
+        # CORREÇÃO DE SINTAXE: 'DIRS': [] deve ter uma vírgula no final.
+        # DIRS está vazio porque você não quer usar a pasta templates/ na raiz.
+        'DIRS': [], 
+        
+        # Garante que o Django procure em: app_main/templates/index.html, etc.
+        'APP_DIRS': True, 
+        
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
