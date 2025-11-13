@@ -1,4 +1,6 @@
+# app_eventos/views.py
+
 from django.shortcuts import render
 
-def eventos(request):
-    return render(request, 'eventos/eventos.html')
+def lista_eventos(request):
+    return render(request, 'eventos.html', {})

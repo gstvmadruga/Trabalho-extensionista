@@ -31,18 +31,22 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # Apps padrão do Django...
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Projeto_Pedalar/settings.py
+
+
     
-    ''
+    # SUAS APPS AQUI:
     'app_main',
-    'app_eventos',
     'app_projetos',
-    'app_ajudar',   
+    'app_eventos',
+    'app_ajudar',
 ]
 
 

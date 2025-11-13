@@ -1,3 +1,6 @@
+/* eventos.css */
+
+/* Estilos para a página de eventos */
 .section-title-events {
     margin-bottom: 40px;
     text-align: left;
@@ -13,19 +16,59 @@
     background-color: var(--gray-light);
     border-radius: 10px;
     padding: 30px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    border-left: 5px solid var(--blue-dark);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 5px solid var(--blue-dark);
 }
 
 .event-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
+.event-card h3 {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.event-meta {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    color: #666;
+}
+
+.event-meta i {
+    color: var(--blue-dark);
+    font-size: 1.2em;
+}
+
+.event-card .button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 10px;
+}
+
+/* Estilo para eventos passados */
 .event-card.past {
     opacity: 0.6;
     border-left: 5px solid #ccc;
     background-color: #e9ecef;
 }
-.mt-60 { margin-top: 60px; }
+
+.event-card.past h3,
+.event-card.past p,
+.event-card.past .event-meta i {
+    color: #777;
+}
+
+.event-card.past .button {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.event-card.past .button:hover {
+    background-color: #aaa;
+    transform: none;
+}

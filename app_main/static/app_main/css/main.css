@@ -1,0 +1,269 @@
+/* main.css */
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background-image: linear-gradient(135deg, var(--green) 0%, var(--blue-dark) 100%);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--white);
+}
+
+.hero .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--white);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--white);
+    max-width: 600px;
+    margin: 0 auto 20px;
+}
+
+/* Animations (Mantidas aqui por serem usadas principalmente na home) */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 1s ease-out;
+}
+
+.animate-slide-up {
+    animation: slideUp 0.8s ease-out;
+}
+
+.animate-slide-in {
+    animation: slideIn 1s ease-out;
+}
+
+.delay-1 { animation-delay: 0.5s; }
+.delay-2 { animation-delay: 1s; }
+.delay-3 { animation-delay: 1.5s; }
+
+/* Mission Section */
+.mission-section {
+    padding: 80px 0;
+    background-color: var(--gray-light);
+}
+
+.mission-section .container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.mission-image {
+    flex: 1;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: var(--green);
+    padding: 30px;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mission-card {
+    color: var(--white);
+    text-align: center;
+}
+
+.mission-card h3 {
+    color: var(--blue-dark);
+    font-size: 1.8em;
+}
+
+.mission-card p {
+    color: #ccc;
+    font-size: 1.1em;
+}
+
+.mission-text {
+    flex: 1;
+}
+
+/* Projects Carousel Section */
+.projects-carousel-section {
+    padding: 60px 0;
+}
+
+.carousel-container {
+    position: relative;
+    max-width: 900px;
+    margin: 40px auto;
+    overflow: hidden;
+    padding: 0 50px; /* Adicionado para dar espaço aos botões */
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.carousel-slide {
+    flex-shrink: 0;
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.slide-content {
+    background-color: var(--gray-light);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    padding: 30px;
+    text-align: center;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.slide-content:hover {
+    border-color: var(--blue-dark);
+}
+
+.slide-content h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(76, 175, 80, 0.8);
+    color: var(--white);
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 50%;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-button:hover {
+    background-color: var(--green);
+}
+
+.carousel-button.prev {
+    left: 0;
+}
+.carousel-button.next {
+    right: 0;
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: var(--blue-dark);
+}
+
+/* Testimonials Section */
+.testimonials-section {
+    background-color: var(--gray-light);
+    padding: 60px 0;
+}
+
+.testimonials-carousel {
+    max-width: 800px;
+    margin: 40px auto;
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.testimonial-slide {
+    display: none;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.testimonial-slide.active {
+    display: block;
+}
+
+.testimonial-quote {
+    font-style: italic;
+    font-size: 1.4em;
+    margin: 20px 0;
+    color: var(--green);
+}
+
+.testimonial-author {
+    font-weight: 600;
+    color: var(--blue-dark);
+    margin-top: 10px;
+}
+
+/* CTA Bottom Section */
+.cta-bottom {
+    background: var(--green);
+    color: var(--white);
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.cta-bottom h2 {
+    color: var(--white);
+}
+
+.cta-bottom p {
+    color: #ccc;
+    max-width: 800px;
+    margin: 0 auto 30px;
+}
+
+.cta-buttons-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
