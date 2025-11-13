@@ -1,4 +1,17 @@
-/* app_ajudar - estilo da página Como Ajudar */
+/* Como Ajudar - style-como-ajudar.css */
+:root {
+    --green: #1A237E;
+    --blue-dark: #4CAF50;
+    --gray-light: #f4f4f4;
+    --gray-dark: #333;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--white);
+    color: var(--gray-dark);
+}
+
 .help-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -11,13 +24,31 @@
     border-radius: 10px;
     padding: 30px;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .help-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.help-card .card-icon {
+    font-size: 3em;
+    color: var(--blue-dark);
+    margin-bottom: 20px;
+}
+
+.help-card .card-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: var(--green);
+}
+
+.help-card p {
+    font-size: 0.95em;
+    color: #555;
+    margin-bottom: 20px;
 }
 
 .donation-highlight {
@@ -27,4 +58,11 @@
     margin-top: 60px;
     border-radius: 10px;
     text-align: center;
+}
+
+.donation-highlight p {
+    max-width: 800px;
+    margin: 0 auto 20px;
+    text-align: center;
+    color: #333;
 }

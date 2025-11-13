@@ -1,0 +1,90 @@
+/* Contato - style-contato.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+    --green: #1A237E;
+    --blue-dark: #4CAF50;
+    --white: #FFFFFF;
+    --gray-dark: #333;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--white);
+    color: var(--gray-dark);
+}
+
+.contact-form-container {
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 1em;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--blue-dark);
+    box-shadow: 0 0 0 3px rgba(76,175,80,0.2);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 50px;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.button, .cta-button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: var(--blue-dark);
+    color: var(--white);
+    border-radius: 50px;
+    font-weight: 600;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover, .cta-button:hover {
+    background-color: #388e3c;
+    transform: translateY(-2px);
+}
+
+.secondary-button {
+    background-color: transparent;
+    border: 2px solid var(--blue-dark);
+    color: var(--blue-dark);
+    margin-left: 15px;
+}
+
+.secondary-button:hover {
+    background-color: var(--blue-dark);
+    color: var(--white);
+}

@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles',  
     
     # Seus apps
     'app_main',
@@ -127,8 +127,6 @@ USE_TZ = True
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-STATIC_URL = 'static/'
-
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
@@ -136,6 +134,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "app_ajudar" / "static",
     BASE_DIR / "app_eventos" / "static",
     BASE_DIR / "app_projetos" / "static",
+    BASE_DIR / "static"
 ]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 

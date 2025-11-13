@@ -1,0 +1,79 @@
+/* Sobre Nós - style-sobre.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+    --green: #1A237E;
+    --blue-dark: #4CAF50;
+    --white: #FFFFFF;
+    --gray-light: #f4f4f4;
+    --gray-dark: #333;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--white);
+    color: var(--gray-dark);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    color: var(--green);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.page-header {
+    background-color: var(--green);
+    color: var(--white);
+    padding: 60px 0;
+    text-align: center;
+}
+
+.page-header h1 {
+    color: var(--white);
+    font-size: 3rem;
+}
+
+.page-header p {
+    color: #ccc;
+    font-size: 1.2em;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.content-section {
+    padding: 60px 20px;
+}
+
+.mission-section {
+    padding: 80px 0;
+    background-color: var(--gray-light);
+}
+
+.mission-section .container {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+.mission-image {
+    flex: 1;
+    background-color: var(--green);
+    border-radius: 15px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mission-card h3 {
+    color: var(--blue-dark);
+}
+
+.mission-card p {
+    color: #ccc;
+}
+
+.text-center {
+    text-align: center;
+}

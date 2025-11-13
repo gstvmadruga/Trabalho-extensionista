@@ -6,14 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Como Ajudar - Projeto Pedalar</title>
-
-    <!-- CSS principal -->
-    <link rel="stylesheet" href="{% static 'app_main/css/style.css' %}">
-
-    <!-- Ícones -->
+    <link rel="stylesheet" href="{% static 'app_ajudar/css/style-ajudar.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
     <header>
         <div class="container">
@@ -29,7 +24,7 @@
                     <li><a href="{% url 'sobre' %}">Sobre Nós</a></li>
                     <li><a href="{% url 'projetos' %}">Nossos Projetos</a></li>
                     <li><a href="{% url 'eventos' %}">Eventos</a></li>
-                    <li><a href="{% url 'ajudar' %}">Como Ajudar</a></li>
+                    <li><a href="{% url 'como_ajudar' %}">Como Ajudar</a></li>
                     <li><a href="{% url 'contato' %}">Contato</a></li>
                 </ul>
             </nav>
@@ -56,14 +51,12 @@
                         <p>Sua contribuição financeira é essencial para cobrir custos de manutenção, comprar peças e materiais para as oficinas.</p>
                         <a href="{% url 'contato' %}" class="button">Doar Agora</a>
                     </div>
-
                     <div class="help-card">
                         <div class="card-icon"><i class="fas fa-hands-helping"></i></div>
                         <h3 class="card-title">Seja um Voluntário</h3>
                         <p>Dê seu tempo e talento. Participe das oficinas, organize eventos ou ajude na nossa comunicação. Seu esforço é a força do nosso motor.</p>
                         <a href="{% url 'contato' %}" class="button secondary-button">Quero Ser Voluntário</a>
                     </div>
-
                     <div class="help-card">
                         <div class="card-icon"><i class="fas fa-handshake"></i></div>
                         <h3 class="card-title">Torne-se um Parceiro</h3>
@@ -79,6 +72,7 @@
                 </div>
             </div>
         </section>
+
     </main>
 
     <footer class="better-footer">
@@ -88,23 +82,20 @@
                     <a href="{% url 'index' %}" class="logo">Projeto Pedalar</a>
                     <p>Transformando vidas, uma pedalada de cada vez. Nosso compromisso é com a educação, a inclusão e a felicidade.</p>
                 </div>
-
                 <div class="footer-nav">
                     <h4>Navegue</h4>
                     <ul>
                         <li><a href="{% url 'sobre' %}">Sobre Nós</a></li>
                         <li><a href="{% url 'projetos' %}">Nossos Projetos</a></li>
                         <li><a href="{% url 'eventos' %}">Eventos</a></li>
-                        <li><a href="{% url 'ajudar' %}">Como Ajudar</a></li>
+                        <li><a href="{% url 'como_ajudar' %}">Como Ajudar</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-contact">
                     <h4>Contato</h4>
                     <p>Rua dos Ciclistas, 123 - Centro<br>Rio de Janeiro, RJ</p>
                     <p>E-mail: contato@projetopedalar.org<br>Telefone: (21) 99999-9999</p>
                 </div>
-
                 <div class="footer-newsletter">
                     <h4>Assine nossa Newsletter</h4>
                     <p>Receba as últimas notícias e novidades do projeto!</p>
@@ -114,18 +105,17 @@
                     </form>
                 </div>
             </div>
-
             <div class="footer-bottom">
                 <div class="footer-social">
                     <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                 </div>
-                <p class="copyright">&copy; 2025 Projeto Pedalar. Todos os direitos reservados.</p>
+                <p class="copyright">&copy; 2024 Projeto Pedalar. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
-    <script src="{% static 'app_main/js/script.js' %}"></script>
+    <script src="{% static 'app_ajudar/js/script.js' %}"></script>
 </body>
 </html>
