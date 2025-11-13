@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Menu Hamburger
+    // --- Menu Hamburger ---
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
 
@@ -9,18 +9,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Formulário de Contato
+    // --- Formulário de Contato ---
     const contactForm = document.getElementById('contact-form');
     const formMessage = document.getElementById('form-message');
 
     if (contactForm) {
         contactForm.addEventListener('submit', function(event) {
             event.preventDefault();
+
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
 
-            formMessage.textContent = '';
+            formMessage.textContent = ''; // limpa a mensagem anterior
 
             if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
                 formMessage.textContent = 'Por favor, preencha todos os campos obrigatórios.';
@@ -33,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Newsletter
+    // --- Newsletter ---
     const newsletterForm = document.getElementById('newsletter-form');
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', function(event) {
@@ -48,31 +49,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Contadores
+    // --- Contadores animados (Página inicial) ---
     const counters = document.querySelectorAll('.counter');
+    const options = { threshold: 0.5 };
+
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const counterElement = entry.target;
-                const target = parseInt(counterElement.dataset.target);
+                const counter = entry.target;
+                const target = parseInt(counter.dataset.target);
                 let count = 0;
-                const speed = 100;
-                const increment = target / speed;
+                const increment = target / 100;
 
                 const updateCounter = () => {
                     if (count < target) {
                         count += increment;
-                        counterElement.innerText = Math.ceil(count);
+                        counter.innerText = Math.ceil(count);
                         setTimeout(updateCounter, 10);
                     } else {
-                        counterElement.innerText = target;
+                        counter.innerText = target;
                     }
                 };
                 updateCounter();
-                observer.unobserve(counterElement);
+                observer.unobserve(counter);
             }
         });
-    });
+    }, options);
 
     counters.forEach(counter => observer.observe(counter));
 });
