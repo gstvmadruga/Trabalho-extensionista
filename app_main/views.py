@@ -14,3 +14,6 @@ def contato(request):
 
 def index(request):
     return render(request, 'app_main/index.html') 
+
+def sobre(request):
+    return render(request, 'app_main/sobre.html')

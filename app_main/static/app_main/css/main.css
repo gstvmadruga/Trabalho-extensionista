@@ -25,3 +25,7 @@ header { background-color: var(--green); color: var(--white); padding: 1rem 0; p
 /* Footer */
 .better-footer { background: var(--green); color: var(--white); padding: 60px 0 20px; }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; color: #ccc; }
+
+body {
+    background-color: lightblue !important;
+}

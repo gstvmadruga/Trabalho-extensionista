@@ -1,6 +1,5 @@
-/* main.js (Base, Index, Sobre e Contato) */
 document.addEventListener('DOMContentLoaded', () => {
-    // --- 1. Menu Hamburger (TODAS AS PÁGINAS) ---
+    // Menu Hamburger
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
 
@@ -10,20 +9,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 2. Formulário de Contato aprimorado (PÁGINA DE CONTATO) ---
+    // Formulário de Contato
     const contactForm = document.getElementById('contact-form');
     const formMessage = document.getElementById('form-message');
 
     if (contactForm) {
         contactForm.addEventListener('submit', function(event) {
             event.preventDefault();
-            
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
 
-            // Simulação de resposta:
-            formMessage.textContent = ''; 
+            formMessage.textContent = '';
 
             if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
                 formMessage.textContent = 'Por favor, preencha todos os campos obrigatórios.';
@@ -36,12 +33,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 3. Formulário de Newsletter (TODAS AS PÁGINAS / FOOTER) ---
+    // Newsletter
     const newsletterForm = document.getElementById('newsletter-form');
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', function(event) {
             event.preventDefault();
-
             const emailInput = this.querySelector('input[type="email"]');
             if (emailInput.value.trim() === '') {
                 alert('Por favor, insira um e-mail válido.');
@@ -52,14 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 4. Animação de Contadores na Página Inicial (PÁGINA INDEX) ---
+    // Contadores
     const counters = document.querySelectorAll('.counter');
-    const options = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.5
-    };
-
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -82,30 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 observer.unobserve(counterElement);
             }
         });
-    }, options);
-
-    counters.forEach(counter => {
-        observer.observe(counter);
     });
-    
-    // --- 5. Carrossel de Depoimentos (PÁGINA INDEX) ---
-    const testimonials = document.querySelectorAll('.testimonial-slide');
-    let currentTestimonial = 0;
 
-    function showTestimonial(n) {
-        testimonials.forEach(testimonial => testimonial.style.display = 'none');
-        if (testimonials[n]) {
-             testimonials[n].style.display = 'block';
-        }
-    }
-
-    function nextTestimonial() {
-        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-        showTestimonial(currentTestimonial);
-    }
-
-    if (testimonials.length > 0) {
-        setInterval(nextTestimonial, 5000);
-        showTestimonial(0);
-    }
+    counters.forEach(counter => observer.observe(counter));
 });
