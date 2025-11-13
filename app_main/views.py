@@ -1,16 +1,16 @@
 from django.shortcuts import render
 
 def index(request):
-    return render(request, 'main/index.html')
+    return render(request, 'app_main/index.html')
 
 def sobre(request):
-    return render(request, 'main/sobre.html')
+    return render(request, 'app_main/sobre.html')
 
 def projetos(request):
-    return render(request, 'main/projetos.html') 
+    return render(request, 'projetos/projetos.html') 
 
 def contato(request):
-    return render(request, 'main/contato.html')
+    return render(request, 'app_main/contato.html')
 
 def contato(request):
-    return render(request, 'main/eventos.html')
+    return render(request, 'eventos/eventos.html')
