@@ -1,4 +1,3 @@
-/* app_ajudar - estilo da página Como Ajudar */
 .help-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -11,13 +10,19 @@
     border-radius: 10px;
     padding: 30px;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .help-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.help-card .card-icon {
+    font-size: 3em;
+    color: var(--blue-dark);
+    margin-bottom: 20px;
 }
 
 .donation-highlight {

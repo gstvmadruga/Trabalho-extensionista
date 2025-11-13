@@ -8,3 +8,9 @@ def sobre(request):
 
 def projetos(request):
     return render(request, 'main/projetos.html') 
+
+def contato(request):
+    return render(request, 'main/contato.html')
+
+def contato(request):
+    return render(request, 'main/eventos.html')
