@@ -1,0 +1,27 @@
+/* app_main - estilo principal */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+    --green: #1A237E;
+    --blue-dark: #4CAF50;
+    --white: #FFFFFF;
+    --gray-light: #f4f4f4;
+    --gray-dark: #333;
+}
+
+/* Base e layout geral */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: var(--gray-dark); background-color: var(--white); }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* Header e navegação */
+header { background-color: var(--green); color: var(--white); padding: 1rem 0; position: sticky; top: 0; z-index: 1000; }
+.logo { font-size: 1.5rem; font-weight: 700; color: var(--white); }
+
+/* Hero */
+.hero { height: 100vh; background-image: linear-gradient(135deg, var(--green) 0%, var(--blue-dark) 100%); display: flex; justify-content: center; align-items: center; color: var(--white); text-align: center; }
+
+/* Footer */
+.better-footer { background: var(--green); color: var(--white); padding: 60px 0 20px; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; color: #ccc; }

@@ -1,0 +1,30 @@
+/* app_eventos - estilo da página de eventos */
+.section-title-events {
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.event-card {
+    background-color: var(--gray-light);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 5px solid var(--blue-dark);
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.event-card.past {
+    opacity: 0.6;
+    background-color: #e9ecef;
+}

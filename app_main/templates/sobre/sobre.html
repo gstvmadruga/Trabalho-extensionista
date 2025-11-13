@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós - Projeto Pedalar</title>
+    <link rel="stylesheet" href="{% static 'app_main/css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="{% url 'index' %}" class="logo">Projeto Pedalar</a>
+            <nav class="nav-menu">
+                <button class="hamburger" aria-label="Abrir menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <ul>
+                    <li><a href="{% url 'index' %}">Início</a></li>
+                    <li><a href="{% url 'sobre' %}" class="active">Sobre Nós</a></li>
+                    <li><a href="{% url 'projetos' %}">Nossos Projetos</a></li>
+                    <li><a href="{% url 'eventos' %}">Eventos</a></li>
+                    <li><a href="{% url 'como_ajudar' %}">Como Ajudar</a></li>
+                    <li><a href="{% url 'contato' %}">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Sobre o Projeto Pedalar</h1>
+                <p>Nossa história, nossa missão e as pessoas que movem essa causa.</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <div class="text-center">
+                    <h2>Nossa História e Propósito</h2>
+                    <p>O Projeto Pedalar nasceu da simples ideia de que uma bicicleta pode ser mais do que um brinquedo ou um meio de transporte — ela pode ser um instrumento de transformação social. Fundado em 2018 por um grupo de ciclistas e educadores, o projeto começou com a doação de poucas bicicletas restauradas para uma comunidade local. Rapidamente, percebemos o impacto que essa pequena ação poderia ter na vida de crianças e adolescentes.</p>
+                    <p>Desde então, expandimos nossas atividades para incluir oficinas de mecânica, passeios educativos e programas de mentoria. Nosso propósito é empoderar a juventude, oferecendo-lhes não apenas um novo meio de mobilidade, mas também habilidades, autoconfiança e a alegria de pertencer a uma comunidade.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="impact-numbers">
+            <div class="container">
+                <h2 class="green-title">Nossos Valores</h2>
+                <div class="numbers-grid">
+                    <div class="number-item">
+                        <i class="fas fa-heart icon-number"></i>
+                        <p><strong>Paixão</strong><br>O amor pelo ciclismo e a dedicação à nossa causa são o que nos impulsionam a cada dia.</p>
+                    </div>
+                    <div class="number-item">
+                        <i class="fas fa-hand-holding-heart icon-number"></i>
+                        <p><strong>Inclusão</strong><br>Acreditamos que todos merecem ter acesso a oportunidades, e a bicicleta é um meio de garantir isso.</p>
+                    </div>
+                    <div class="number-item">
+                        <i class="fas fa-users icon-number"></i>
+                        <p><strong>Comunidade</strong><br>Somos uma grande família, unida pelo desejo de fazer a diferença e construir um futuro melhor para todos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="better-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="{% url 'index' %}" class="logo">Projeto Pedalar</a>
+                    <p>Transformando vidas, uma pedalada de cada vez. Nosso compromisso é com a educação, a inclusão e a felicidade.</p>
+                </div>
+                <div class="footer-nav">
+                    <h4>Navegue</h4>
+                    <ul>
+                        <li><a href="{% url 'sobre' %}">Sobre Nós</a></li>
+                        <li><a href="{% url 'projetos' %}">Nossos Projetos</a></li>
+                        <li><a href="{% url 'eventos' %}">Eventos</a></li>
+                        <li><a href="{% url 'como_ajudar' %}">Como Ajudar</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <p>Rua dos Ciclistas, 123 - Centro<br>Rio de Janeiro, RJ</p>
+                    <p>E-mail: contato@projetopedalar.org<br>Telefone: (21) 99999-9999</p>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Assine nossa Newsletter</h4>
+                    <p>Receba as últimas notícias e novidades do projeto!</p>
+                    <form id="newsletter-form">
+                        <input type="email" placeholder="Seu e-mail" required>
+                        <button type="submit" class="button">Assinar</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+                <p class="copyright">&copy; 2024 Projeto Pedalar. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'app_main/js/script.js' %}"></script>
+</body>
+</html>

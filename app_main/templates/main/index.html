@@ -1,0 +1,198 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Pedalar - Pedalando para um Futuro Melhor</title>
+    <link rel="stylesheet" href="{% static 'app_main/css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="{% url 'index' %}" class="logo">Projeto Pedalar</a>
+            <nav class="nav-menu">
+                <button class="hamburger" aria-label="Abrir menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <ul>
+                    <li><a href="{% url 'index' %}">Início</a></li>
+                    <li><a href="{% url 'sobre' %}">Sobre Nós</a></li>
+                    <li><a href="{% url 'projetos' %}">Nossos Projetos</a></li>
+                    <li><a href="{% url 'eventos' %}">Eventos</a></li>
+                    <li><a href="{% url 'como_ajudar' %}">Como Ajudar</a></li>
+                    <li><a href="{% url 'contato' %}">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="overlay"></div>
+            <div class="hero-content">
+                <h1 class="animate-fade-in">Pedalando para um Futuro Melhor</h1>
+                <p class="animate-fade-in delay-1">A paixão por bicicletas encontra a transformação social.</p>
+                <a href="{% url 'como_ajudar' %}" class="cta-button animate-slide-up delay-2">Apoie Nossa Causa</a>
+            </div>
+        </section>
+
+        <section class="mission-section">
+            <div class="container">
+                <div class="mission-image animate-slide-in">
+                    <div class="mission-card">
+                        <h3 class="green-title">A Bicicleta como Ferramenta</h3>
+                        <p>Acreditamos que cada pedalada é um passo em direção a um futuro mais justo. No Projeto Pedalar, transformamos bicicletas usadas em veículos de esperança e oportunidade.</p>
+                    </div>
+                </div>
+                <div class="mission-text animate-fade-in delay-3">
+                    <h2>Nossa Missão</h2>
+                    <p>No Projeto Pedalar, usamos a bicicleta como uma poderosa ferramenta de inclusão social, educação e lazer para crianças e adolescentes em situação de vulnerabilidade. Acreditamos que cada pedalada é um passo em direção a um futuro mais justo e feliz para crianças e adolescentes em situação de vulnerabilidade.</p>
+                    <p>Muito mais do que apenas um meio de transporte, a bicicleta é um veículo de sonhos e oportunidades. Junte-se a nós para construir um caminho cheio de esperança.</p>
+                    <a href="{% url 'sobre' %}" class="button">Conheça Nossa História</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="impact-numbers">
+            <div class="container">
+                <h2>Nosso Impacto em Números</h2>
+                <div class="numbers-grid">
+                    <div class="number-item">
+                        <i class="fas fa-bicycle icon-number"></i>
+                        <span class="counter" data-target="250">0</span>
+                        <p>Bicicletas Doadas</p>
+                    </div>
+                    <div class="number-item">
+                        <i class="fas fa-users icon-number"></i>
+                        <span class="counter" data-target="800">0</span>
+                        <p>Crianças Impactadas</p>
+                    </div>
+                    <div class="number-item">
+                        <i class="fas fa-handshake icon-number"></i>
+                        <span class="counter" data-target="150">0</span>
+                        <p>Voluntários Ativos</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects-carousel-section">
+            <div class="container">
+                <h2>Projetos em Destaque</h2>
+                <div class="carousel-container">
+                    <div class="carousel-track">
+                        <div class="carousel-slide">
+                            <div class="slide-content">
+                                <h3>Oficina de Mecânica</h3>
+                                <p>Ensinamos a arte da mecânica de bicicletas, capacitando jovens e garantindo que as bicicletas estejam sempre prontas para rodar, em um ambiente de aprendizado e colaboração.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="slide-content">
+                                <h3>Passeios Comunitários</h3>
+                                <p>Organizamos passeios seguros e divertidos para explorar a cidade, promovendo saúde, lazer e a descoberta de novos lugares de forma lúdica e responsável.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="slide-content">
+                                <h3>Programa de Doação</h3>
+                                <p>Coletamos, restauramos e doamos bicicletas para quem mais precisa. Cada doação é uma nova oportunidade, levando alegria e mobilidade a comunidades carentes.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="slide-content">
+                                <h3>Clube do Pedal</h3>
+                                <p>Criamos um clube para promover a prática regular de ciclismo, incentivando a disciplina, o trabalho em equipe e o respeito ao próximo entre os jovens participantes.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-button prev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-button next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="carousel-dots"></div>
+                <div class="text-center mt-4">
+                    <a href="{% url 'projetos' %}" class="button">Veja Todos os Projetos</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials-section">
+            <div class="container">
+                <h2>O que dizem sobre nós</h2>
+                <div class="testimonials-carousel">
+                    <div class="testimonial-slide active">
+                        <p class="testimonial-quote">"Ser voluntário no Projeto Pedalar mudou minha vida. Ver o sorriso de uma criança ao receber sua primeira bicicleta é uma emoção indescritível!"</p>
+                        <h4 class="testimonial-author">— Ana Clara, Voluntária</h4>
+                    </div>
+                    <div class="testimonial-slide">
+                        <p class="testimonial-quote">"Minha bicicleta é meu tesouro. Agora eu posso ir para a escola e brincar com meus amigos. Muito obrigado, Projeto Pedalar!"</p>
+                        <h4 class="testimonial-author">— Pedro, Beneficiário</h4>
+                    </div>
+                    <div class="testimonial-slide">
+                        <p class="testimonial-quote">"É inspirador ver como a bicicleta, algo tão simples, pode ser a ferramenta de um projeto tão poderoso. O Projeto Pedalar faz a diferença!"</p>
+                        <h4 class="testimonial-author">— Ricardo, Parceiro</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-bottom">
+            <div class="container">
+                <h2>Vamos Transformar Vidas Juntos?</h2>
+                <p>Seja um doador, um voluntário ou um parceiro. Cada apoio nos ajuda a ir mais longe, construindo um futuro mais brilhante, uma pedalada de cada vez.</p>
+                <div class="cta-buttons-group">
+                    <a href="{% url 'como_ajudar' %}" class="cta-button">Comece a Ajudar Agora</a>
+                    <a href="{% url 'contato' %}" class="button secondary-button">Fale Conosco</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="better-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="{% url 'index' %}" class="logo">Projeto Pedalar</a>
+                    <p>Transformando vidas, uma pedalada de cada vez. Nosso compromisso é com a educação, a inclusão e a felicidade.</p>
+                </div>
+                <div class="footer-nav">
+                    <h4>Navegue</h4>
+                    <ul>
+                        <li><a href="{% url 'sobre' %}">Sobre Nós</a></li>
+                        <li><a href="{% url 'projetos' %}">Nossos Projetos</a></li>
+                        <li><a href="{% url 'eventos' %}">Eventos</a></li>
+                        <li><a href="{% url 'como_ajudar' %}">Como Ajudar</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <p>Rua dos Ciclistas, 123 - Centro<br>Rio de Janeiro, RJ</p>
+                    <p>E-mail: contato@projetopedalar.org<br>Telefone: (21) 99999-9999</p>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Assine nossa Newsletter</h4>
+                    <p>Receba as últimas notícias e novidades do projeto!</p>
+                    <form id="newsletter-form">
+                        <input type="email" placeholder="Seu e-mail" required>
+                        <button type="submit" class="button">Assinar</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+                <p class="copyright">&copy; 2024 Projeto Pedalar. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'app_main/js/script.js' %}"></script>
+</body>
+</html>

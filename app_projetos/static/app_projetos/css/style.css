@@ -1,0 +1,28 @@
+/* app_projetos - estilo da página de projetos */
+.projects-carousel-section {
+    padding: 60px 0;
+}
+
+.carousel-container {
+    position: relative;
+    max-width: 900px;
+    margin: 40px auto;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.slide-content {
+    background-color: var(--gray-light);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    transition: border-color 0.3s ease;
+}
+
+.slide-content:hover {
+    border-color: var(--blue-dark);
+}
