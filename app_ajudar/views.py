@@ -1,4 +1,4 @@
 from django.shortcuts import render
 
-def ajudar(request):
+def como_ajudar(request):
     return render(request, 'ajudar/ajudar.html')
