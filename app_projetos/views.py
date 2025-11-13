@@ -1,5 +1,4 @@
 from django.shortcuts import render
 
-def lista_projetos(request):
-
-    return render(request, 'projetos.html', {})
+def projetos(request):
+    return render(request, 'app_projetos/projetos.html')

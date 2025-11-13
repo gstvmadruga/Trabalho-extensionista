@@ -1,6 +1,4 @@
-/* projetos.css */
-
-/* Projects Carousel Section (Usado em Index e Projetos) */
+/* app_projetos - estilo da página de projetos */
 .projects-carousel-section {
     padding: 60px 0;
 }
@@ -10,7 +8,6 @@
     max-width: 900px;
     margin: 40px auto;
     overflow: hidden;
-    padding: 0 50px; 
 }
 
 .carousel-track {
@@ -18,110 +15,14 @@
     transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.carousel-slide {
-    flex-shrink: 0;
-    width: 100%;
-    padding: 15px;
-    box-sizing: border-box;
-}
-
 .slide-content {
     background-color: var(--gray-light);
     border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     padding: 30px;
     text-align: center;
-    min-height: 250px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border: 2px solid transparent;
     transition: border-color 0.3s ease;
 }
 
 .slide-content:hover {
     border-color: var(--blue-dark);
-}
-
-.slide-content h3 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-}
-
-.carousel-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(76, 175, 80, 0.8);
-    color: var(--white);
-    border: none;
-    font-size: 1.5em;
-    cursor: pointer;
-    padding: 10px 15px;
-    border-radius: 50%;
-    z-index: 10;
-    transition: background-color 0.3s ease;
-}
-
-.carousel-button:hover {
-    background-color: var(--green);
-}
-
-.carousel-button.prev {
-    left: 0;
-}
-.carousel-button.next {
-    right: 0;
-}
-
-.carousel-dots {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #ccc;
-    margin: 0 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.dot.active {
-    background-color: var(--blue-dark);
-}
-
-/* Grid de Projetos (Para a página projetos.html) - NÃO ESTAVA NO CÓDIGO ORIGINAL, mas é essencial */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.project-card {
-    background-color: var(--gray-light);
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: center;
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-}
-
-.project-icon {
-    font-size: 3em;
-    color: var(--blue-dark);
-    margin-bottom: 15px;
-}
-
-.green-title {
-    color: var(--green);
 }

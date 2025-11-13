@@ -21,10 +21,9 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    
     path('', include('app_main.urls')),
-    
-    path('projetos/', include('app_projetos.urls')),
     path('eventos/', include('app_eventos.urls')),
-    path('como-ajudar/', include('app_ajudar.urls')),
+    path('ajudar/', include('app_ajudar.urls')),
+    path('projetos/', include('app_projetos.urls')),  # ✅ adicionando o app projetos
 ]
+

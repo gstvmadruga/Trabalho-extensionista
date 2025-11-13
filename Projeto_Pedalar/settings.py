@@ -34,24 +34,19 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    # Apps padrão do Django...
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Projeto_Pedalar/settings.py
-
-
     
-    # SUAS APPS AQUI:
+    # Seus apps
     'app_main',
-    'app_projetos',
     'app_eventos',
-    'app_ajudar',
+    'app_projetos',
+    'app_ajudar',   # se existir
 ]
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -71,14 +66,8 @@ ROOT_URLCONF = 'Projeto_Pedalar.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        
-        # CORREÇÃO DE SINTAXE: 'DIRS': [] deve ter uma vírgula no final.
-        # DIRS está vazio porque você não quer usar a pasta templates/ na raiz.
-        'DIRS': [], 
-        
-        # Garante que o Django procure em: app_main/templates/index.html, etc.
-        'APP_DIRS': True, 
-        
+        'DIRS': [],  # vazio se você usa os templates dentro de cada app
+        'APP_DIRS': True,  # precisa estar como True
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -89,6 +78,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'Projeto_Pedalar.wsgi.application'
 
