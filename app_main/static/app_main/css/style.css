@@ -898,74 +898,74 @@ main {
     transform: translateY(-2px);
 }
 
-#form-msg {
+/* Modal de agradecimento */
+#thankyou-modal {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6); /* Fundo escuro semi-transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#thankyou-modal .modal-content {
+    background-color: var(--white);
+    padding: 25px 35px; /* Reduzi o padding */
+    border-radius: 10px;
     text-align: center;
-    color: var(--green);
-    margin-top: 15px;
-    font-weight: 600;
+    max-width: 400px;
+    line-height: 1.4; /* Reduz a altura das linhas */
+    font-size: 1.1rem;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    position: relative;
 }
 
-
-.donation-section h3 {
-    margin-top: 30px;
-    color: var(--green);
-    font-size: 1.3em;
-}
-
-.donation-info p {
-    font-size: 1.1em;
-    margin: 8px 0;
-}
-
-.donation-message {
-    margin-top: 40px;
-    font-size: 1.1em;
+#thankyou-modal .modal-content .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
     color: var(--gray-dark);
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
+}
+
+#thankyou-modal .modal-content p {
+    margin: 0; 
     text-align: center;
-    margin-bottom: 100px;
-}
-
-/* Espaçamento na página de doação */
-.doacao-container {
-    padding: 60px 0;
-}
-
-.doacao-container h2 {
-    margin-bottom: 20px;
-    color: var(--green);
-}
-
-.doacao-container p {
-    margin-bottom: 15px;
-    font-size: 1.1em;
-}
-
-.doacao-container ul {
-    margin-left: 20px;
-    margin-bottom: 30px;
-}
-
-.doacao-spacer {
-    height: 50px; /* Espaço extra entre PIX e Bicicletas */
 }
 
 .tipo-doacao{
-
-    padding-top: 20px;
     text-align: center;
+    margin-top: 25px;
 }
 
 .bicicletas{
-    padding-top: 40px;
+    margin-top: 40px;
+}
+
+.donation-message{
+    margin-top: 70px;
+    margin-bottom: 70px;
+    text-align: center;
 }
 
 .texto-bicicleta{
-    padding-top: 25px;
-
+    margin-top: 40px;
 
 }
+
+.doar{
+    margin-top: 50px;
+}
+
+
 
 

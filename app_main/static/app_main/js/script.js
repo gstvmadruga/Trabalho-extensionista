@@ -268,54 +268,73 @@ document.addEventListener('DOMContentLoaded', () => {
 }); 
 
 document.addEventListener("DOMContentLoaded", function () {
+    // ======= Carrossel =======
     const track = document.querySelector(".carousel-track");
-    const slides = Array.from(track.children);
-    const nextButton = document.querySelector(".next");
-    const prevButton = document.querySelector(".prev");
+    if (track) {
+        const slides = Array.from(track.children);
+        const nextButton = document.querySelector(".next");
+        const prevButton = document.querySelector(".prev");
 
-    let currentSlide = 0;
+        let currentSlide = 0;
 
-    function updateSlidePosition() {
-        const slideWidth = slides[0].getBoundingClientRect().width;
-        track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+        function updateSlidePosition() {
+            const slideWidth = slides[0].getBoundingClientRect().width;
+            track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+        }
+
+        nextButton.addEventListener("click", () => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateSlidePosition();
+        });
+
+        prevButton.addEventListener("click", () => {
+            currentSlide =
+                currentSlide === 0 ? slides.length - 1 : currentSlide - 1;
+            updateSlidePosition();
+        });
+
+        window.addEventListener("resize", updateSlidePosition);
     }
 
-    nextButton.addEventListener("click", () => {
-        currentSlide = (currentSlide + 1) % slides.length;
-        updateSlidePosition();
-    });
-
-    prevButton.addEventListener("click", () => {
-        currentSlide =
-            currentSlide === 0 ? slides.length - 1 : currentSlide - 1;
-        updateSlidePosition();
-    });
-
-    window.addEventListener("resize", updateSlidePosition);
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Menu Hamburger
+    // ======= Menu Hamburger =======
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
-
     if (hamburger && navMenu) {
         hamburger.addEventListener('click', () => {
             navMenu.classList.toggle('active');
         });
     }
 
-    // Formulário de Voluntariado
-    const form = document.getElementById('voluntario-form');
-    const msg = document.getElementById('form-msg');
+    // ======= Formulário de Voluntariado com Modal =======
+ const form = document.getElementById('voluntario-form');
+ const modal = document.getElementById('thankyou-modal');
+ const closeBtn = modal.querySelector('.close'); // seleciona o botão dentro do modal
 
+if (form && modal && closeBtn) {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        // Simulação de envio
-        msg.textContent = "Obrigado por se voluntariar! Entraremos em contato em breve.";
+        // Mostrar modal
+        modal.style.display = 'flex'; // flex para centralizar
+
+        // Resetar formulário
         form.reset();
     });
+
+    // Fechar modal ao clicar no X
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    // Fechar modal ao clicar fora do conteúdo
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+}
+
+
 });
 
 
