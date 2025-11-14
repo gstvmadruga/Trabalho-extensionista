@@ -294,3 +294,54 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("resize", updateSlidePosition);
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    // Menu Hamburger
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    }
+
+    // Formulário de Voluntariado
+    const form = document.getElementById('voluntario-form');
+    const msg = document.getElementById('form-msg');
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Simulação de envio
+        msg.textContent = "Obrigado por se voluntariar! Entraremos em contato em breve.";
+        form.reset();
+    });
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Menu Hamburger
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    }
+
+    // Formulário de Parceria
+    const form = document.getElementById('parceiro-form');
+    const msg = document.getElementById('form-msg');
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Simulação de envio
+        msg.textContent = "Obrigado por se tornar parceiro! Entraremos em contato em breve.";
+        form.reset();
+    });
+});
+
+
+

@@ -17,3 +17,9 @@ def como_ajudar(request):
 
 def contato(request):
     return render(request, 'app_main/contato.html')
+
+def voluntario(request):
+    return render(request, 'app_main/voluntario.html')
+
+def parceiro(request):
+    return render(request, 'app_main/parceiro.html')

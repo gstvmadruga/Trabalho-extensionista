@@ -4,21 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Projeto Pedalar - Como Ajudar</title>
-
-    <!-- CSS principal -->
+    <title>Projeto Pedalar - Seja Parceiro</title>
     <link rel="stylesheet" href="{% static 'app_main/css/style.css' %}">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-          integrity="sha512-pVI48dBvT..."
-          crossorigin="anonymous"
-          referrerpolicy="no-referrer" />
 </head>
-
 <body>
+    <!-- Navbar -->
     <header>
         <div class="container">
             <a href="{% url 'app_main:index' %}" class="logo">Projeto Pedalar</a>
@@ -33,58 +23,57 @@
                     <li><a href="{% url 'app_main:sobre' %}">Sobre Nós</a></li>
                     <li><a href="{% url 'app_main:projetos' %}">Nossos Projetos</a></li>
                     <li><a href="{% url 'app_main:eventos' %}">Eventos</a></li>
-                    <li><a href="{% url 'app_main:como_ajudar' %}" class="active">Como Ajudar</a></li>
+                    <li><a href="{% url 'app_main:como_ajudar' %}">Como Ajudar</a></li>
                     <li><a href="{% url 'app_main:contato' %}">Contato</a></li>
+                    <li><a href="{% url 'app_main:parceiro' %}" class="active">Seja Parceiro</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main>
-        <section class="page-header">
-            <div class="container">
-                <h1>Faça a Diferença</h1>
-                <p>Seja parte da nossa causa. Seu apoio é fundamental para transformarmos mais vidas.</p>
+    <!-- Hero Section -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Junte-se a nós como parceiro</h1>
+            <p>Faça a diferença e apoie o Projeto Pedalar com sua empresa ou organização.</p>
+        </div>
+    </section>
+
+    <!-- Formulário de Parceria -->
+    <section class="volunteer-form-container">
+        <h2>Formulário de Parceria</h2>
+        <form id="parceiro-form">
+            <div class="form-group">
+                <label for="nome">Nome completo</label>
+                <input type="text" id="nome" name="nome" required>
             </div>
-        </section>
 
-        <section class="content-section">
-            <div class="container">
-                <h2 class="blue-title text-center">Formas de Apoio</h2>
-                <p class="text-center">Escolha a maneira que mais combina com você para pedalar conosco em direção a um futuro melhor.</p>
-
-                <div class="help-grid">
-                    <div class="help-card">
-                        <div class="card-icon"><i class="fas fa-donate"></i></div>
-                        <h3 class="card-title">Faça uma Doação</h3>
-                        <p>Sua contribuição financeira é essencial para cobrir custos de manutenção, comprar peças e materiais para as oficinas.</p>
-                        <a href="{% url 'app_main:contato' %}" class="button secondary-button">Doar Agora</a>
-                    </div>
-                    <div class="help-card">
-                        <div class="card-icon"><i class="fas fa-hands-helping"></i></div>
-                        <h3 class="card-title">Seja um Voluntário</h3>
-                        <p>Dê seu tempo e talento. Participe das oficinas, organize eventos ou ajude na nossa comunicação. Seu esforço é a força do nosso motor.</p>
-                        <!-- Link funcional para a página voluntário -->
-                        <a href="{% url 'app_main:voluntario' %}" class="button secondary-button">Quero Ser Voluntário</a>
-                    </div>
-                    <div class="help-card">
-                        <div class="card-icon"><i class="fas fa-handshake"></i></div>
-                        <h3 class="card-title">Torne-se um Parceiro</h3>
-                        <p>Sua empresa ou organização pode nos apoiar com patrocínios, doações de materiais ou serviços. Juntos, podemos ir mais longe.</p>
-                        <a href="{% url 'app_main:parceiro' %}" class="button secondary-button">Tornar-se Parceiro</a>
-                    </div>
-                </div>
-
-                <div class="donation-highlight">
-                    <h2 class="blue-title">Doação de Bicicletas</h2>
-                    <p>Além de doações em dinheiro, aceitamos bicicletas usadas em qualquer estado. Nossa equipe de voluntários irá restaurá-las e prepará-las para a doação, dando uma nova vida a elas e um novo futuro a uma criança.</p>
-                    <a href="{% url 'app_main:contato' %}" class="button">Doar uma Bicicleta</a>
-                </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
             </div>
-        </section>
 
-    </main>
+            <div class="form-group">
+                <label for="telefone">Telefone</label>
+                <input type="tel" id="telefone" name="telefone">
+            </div>
 
+            <div class="form-group">
+                <label for="empresa">Empresa / Organização</label>
+                <input type="text" id="empresa" name="empresa" required>
+            </div>
+
+            <div class="form-group">
+                <label for="mensagem">Mensagem</label>
+                <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+            </div>
+
+            <button type="submit" class="button">Enviar</button>
+        </form>
+        <p id="form-msg"></p>
+    </section>
+
+    <!-- Footer -->
     <footer class="better-footer">
         <div class="container">
             <div class="footer-grid">
@@ -126,6 +115,6 @@
         </div>
     </footer>
 
-   <script src="{% static 'app_main/js/script.js' %}"></script>
+    <script src="{% static 'app_main/js/parceiro.js' %}"></script>
 </body>
 </html>
