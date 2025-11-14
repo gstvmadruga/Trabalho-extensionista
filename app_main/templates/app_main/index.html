@@ -44,7 +44,7 @@
             <div class="hero-content">
                 <h1 class="animate-fade-in">Pedalando para um Futuro Melhor</h1>
                 <p class="animate-fade-in delay-1">A paixão por bicicletas encontra a transformação social.</p>
-                <a href="como-ajudar.html" class="cta-button animate-slide-up delay-2">Apoie Nossa Causa</a>
+                <a href="{% url 'app_main:como_ajudar' %}" class="cta-button animate-slide-up delay-2">Apoie Nossa Causa</a>
             </div>
         </section>
 
@@ -60,7 +60,7 @@
                     <h2>Nossa Missão</h2>
                     <p>No Projeto Pedalar, usamos a bicicleta como uma poderosa ferramenta de inclusão social, educação e lazer para crianças e adolescentes em situação de vulnerabilidade. Acreditamos que cada pedalada é um passo em direção a um futuro mais justo e feliz para crianças e adolescentes em situação de vulnerabilidade.</p>
                     <p>Muito mais do que apenas um meio de transporte, a bicicleta é um veículo de sonhos e oportunidades. Junte-se a nós para construir um caminho cheio de esperança.</p>
-                    <a href="sobre.html" class="button">Conheça Nossa História</a>
+                    <a href="{% url 'app_main:sobre' %}" class="button">Conheça Nossa História</a>
                 </div>
             </div>
         </section>
@@ -123,7 +123,7 @@
                 </div>
                 <div class="carousel-dots"></div>
                 <div class="text-center mt-4">
-                    <a href="projetos.html" class="button">Veja Todos os Projetos</a>
+                    <a href="{% url 'app_main:projetos' %}" class="button">Veja Todos os Projetos</a>
                 </div>
             </div>
         </section>
@@ -153,8 +153,8 @@
                 <h2>Vamos Transformar Vidas Juntos?</h2>
                 <p>Seja um doador, um voluntário ou um parceiro. Cada apoio nos ajuda a ir mais longe, construindo um futuro mais brilhante, uma pedalada de cada vez.</p>
                 <div class="cta-buttons-group">
-                    <a href="como-ajudar.html" class="cta-button">Comece a Ajudar Agora</a>
-                    <a href="contato.html" class="button secondary-button">Fale Conosco</a>
+                    <a href="{% url 'app_main:como_ajudar' %}" class="cta-button">Comece a Ajudar Agora</a>
+                    <a href="{% url 'app_main:contato' %}" class="button secondary-button">Fale Conosco</a>
                 </div>
             </div>
         </section>

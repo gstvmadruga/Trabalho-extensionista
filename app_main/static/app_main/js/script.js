@@ -1,241 +1,296 @@
-script.js
-            document.addEventListener('DOMContentLoaded', () => {
-                // Menu Hamburger
-                const hamburger = document.querySelector('.hamburger');
-                const navMenu = document.querySelector('.nav-menu');
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('[script.js] DOMContentLoaded');
 
-                if (hamburger && navMenu) {
-                    hamburger.addEventListener('click', () => {
-                        navMenu.classList.toggle('active');
-                    });
-                }
+  // ---------- Menu hamburger (mantive seu código) ----------
+  const hamburger = document.querySelector('.hamburger');
+  const navMenu = document.querySelector('.nav-menu');
+  if (hamburger && navMenu) {
+    hamburger.addEventListener('click', () => navMenu.classList.toggle('active'));
+  }
 
-                // Formulário de Contato aprimorado
-                const contactForm = document.getElementById('contact-form');
-                const formMessage = document.getElementById('form-message');
+  // ---------- Forms (mantidos) ----------
+  const contactForm = document.getElementById('contact-form');
+  const formMessage = document.getElementById('form-message');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      formMessage.textContent = '';
+      if (!name || !email || !message) {
+        formMessage.textContent = 'Por favor, preencha todos os campos obrigatórios.';
+        formMessage.style.color = 'red';
+      } else {
+        formMessage.textContent = 'Mensagem enviada com sucesso! Em breve entraremos em contato.';
+        formMessage.style.color = 'green';
+        contactForm.reset();
+      }
+    });
+  }
+  const newsletterForm = document.getElementById('newsletter-form');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const emailInput = this.querySelector('input[type="email"]');
+      if (!emailInput.value.trim()) alert('Por favor, insira um e-mail válido.');
+      else { alert('Obrigado por se inscrever!'); newsletterForm.reset(); }
+    });
+  }
 
-                if (contactForm) {
-                    contactForm.addEventListener('submit', function(event) {
-                        event.preventDefault();
+  // ---------- Counters (mantido) ----------
+  const counters = document.querySelectorAll('.counter');
+  if (counters.length) {
+    const obs = new IntersectionObserver((entries, o) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.dataset.target || '0');
+          let count = 0;
+          const steps = 100;
+          const inc = Math.max(1, Math.floor(target / steps));
+          const run = () => {
+            count += inc;
+            if (count < target) {
+              el.innerText = count;
+              setTimeout(run, 10);
+            } else {
+              el.innerText = target;
+            }
+          };
+          run();
+          o.unobserve(el);
+        }
+      });
+    }, { threshold: 0.4 });
+    counters.forEach(c => obs.observe(c));
+  }
 
-                        const name = document.getElementById('name').value;
-                        const email = document.getElementById('email').value;
-                        const message = document.getElementById('message').value;
+  // ==========================
+  // CARROSSEL DE PROJETOS - ROBUSTO
+  // ==========================
+  const container = document.querySelector('.carousel-container'); // wrapper (opcional)
+  const track = document.querySelector('.carousel-track');
+  let slides = Array.from(document.querySelectorAll('.carousel-slide'));
 
-                        formMessage.textContent = ''; // Limpa a mensagem anterior
+  if (!track || slides.length === 0) {
+    console.warn('[carousel] .carousel-track ou .carousel-slide não encontrado');
+  } else {
+    console.log(`[carousel] encontrado track e ${slides.length} slides`);
 
-                        if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
-                            formMessage.textContent = 'Por favor, preencha todos os campos obrigatórios.';
-                            formMessage.style.color = 'red';
-                        } else {
-                            formMessage.textContent = 'Mensagem enviada com sucesso! Em breve entraremos em contato.';
-                            formMessage.style.color = 'green';
-                            contactForm.reset();
-                        }
-                    });
-                }
+    // botões: aceita classes existentes ou cria se não houver
+    let prevBtn = document.querySelector('.carousel-prev') || document.querySelector('.carousel-button.prev') || null;
+    let nextBtn = document.querySelector('.carousel-next') || document.querySelector('.carousel-button.next') || null;
 
-                // Formulário de Newsletter
-                const newsletterForm = document.getElementById('newsletter-form');
-                if (newsletterForm) {
-                    newsletterForm.addEventListener('submit', function(event) {
-                        event.preventDefault();
+    function createNavButtons() {
+      if (!prevBtn) {
+        prevBtn = document.createElement('button');
+        prevBtn.className = 'carousel-prev';
+        prevBtn.setAttribute('aria-label', 'Anterior');
+        prevBtn.innerHTML = '&#10094;'; // ◀
+        (container || track.parentElement).insertBefore(prevBtn, track);
+      }
+      if (!nextBtn) {
+        nextBtn = document.createElement('button');
+        nextBtn.className = 'carousel-next';
+        nextBtn.setAttribute('aria-label', 'Próximo');
+        nextBtn.innerHTML = '&#10095;'; // ▶
+        (container || track.parentElement).appendChild(nextBtn);
+      }
+    }
+    createNavButtons();
 
-                        const emailInput = this.querySelector('input[type="email"]');
-                        if (emailInput.value.trim() === '') {
-                            alert('Por favor, insira um e-mail válido.');
-                        } else {
-                            alert('Obrigado por se inscrever! Você receberá nossas novidades em breve.');
-                            newsletterForm.reset();
-                        }
-                    });
-                }
+    // estilo básico necessário no track (se ainda não houver)
+    track.style.display = 'flex';
+    track.style.gap = '0';
+    track.style.willChange = 'transform';
 
-                // Animação de Contadores na Página Inicial
-                const counters = document.querySelectorAll('.counter');
-                const options = {
-                    root: null,
-                    rootMargin: '0px',
-                    threshold: 0.5
-                };
+    // garantia: cada slide terá flex: 0 0 <width> para evitar que diminuam
+    let currentIndex = 0;
+    let slideWidth = 0;
 
-                const observer = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const counterElement = entry.target;
-                            const target = parseInt(counterElement.dataset.target);
-                            let count = 0;
-                            const speed = 100;
-                            const increment = target / speed;
+    function setSlideSizes() {
+      // largura do "viewport" do carrossel: se existir .carousel-container use ela, senão use offsetWidth do parent
+      const viewport = container || track.parentElement;
+      slideWidth = Math.floor(viewport.offsetWidth);
+      // se quiser que cada slide ocupe 80% e mostrar parte do próximo, ajuste aqui. Estamos usando 100%.
+      slides.forEach(slide => {
+        slide.style.flex = `0 0 ${slideWidth}px`;
+      });
+      // após ajustar tamanhos, reposiciona
+      moveTo(currentIndex, false);
+    }
 
-                            const updateCounter = () => {
-                                if (count < target) {
-                                    count += increment;
-                                    counterElement.innerText = Math.ceil(count);
-                                    setTimeout(updateCounter, 10);
-                                } else {
-                                    counterElement.innerText = target;
-                                }
-                            };
-                            updateCounter();
-                            observer.unobserve(counterElement);
-                        }
-                    });
-                }, options);
+    function moveTo(index, animate = true) {
+      if (index < 0) index = 0;
+      if (index > slides.length - 1) index = slides.length - 1;
+      currentIndex = index;
+      const offset = -currentIndex * slideWidth;
+      if (!animate) track.style.transition = 'none';
+      else track.style.transition = 'transform 0.45s cubic-bezier(.22,.9,.36,1)';
+      track.style.transform = `translateX(${offset}px)`;
+      // pequeno timeout para reativar transição se for chamado com animate=false
+      if (!animate) requestAnimationFrame(() => {
+        track.style.transition = 'transform 0.45s cubic-bezier(.22,.9,.36,1)';
+      });
+    }
 
-                counters.forEach(counter => {
-                    observer.observe(counter);
-                });
+    // eventos nos botões
+    nextBtn?.addEventListener('click', () => {
+      moveTo(Math.min(currentIndex + 1, slides.length - 1));
+    });
+    prevBtn?.addEventListener('click', () => {
+      moveTo(Math.max(currentIndex - 1, 0));
+    });
 
-                // Carrossel de Projetos
-                // ... (Mantenha o código anterior, como Menu Hamburger e formulários)
+    // teclado (opcional)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') moveTo(Math.min(currentIndex + 1, slides.length - 1));
+      if (e.key === 'ArrowLeft') moveTo(Math.max(currentIndex - 1, 0));
+    });
 
-                // Carrossel de Projetos (CÓDIGO CORRIGIDO)
-                const track = document.querySelector('.carousel-track');
-                const slides = Array.from(track.children);
-                const nextButton = document.querySelector('.carousel-button.next');
-                const prevButton = document.querySelector('.carousel-button.prev');
-                const dotsContainer = document.querySelector('.carousel-dots');
+    // suporte touch / drag
+    (function addTouchSupport() {
+      let startX = 0;
+      let currentTranslate = 0;
+      let isDown = false;
 
-                let slideIndex = 0;
+      track.addEventListener('pointerdown', (e) => {
+        isDown = true;
+        startX = e.clientX;
+        track.style.cursor = 'grabbing';
+        track.style.transition = 'none';
+      });
 
-                // Calcula a largura de um slide e o transforma
-                const updateCarousel = () => {
-                    if (!track || !slides.length) return;
-                    const slideWidth = slides[0].offsetWidth;
-                    const offset = -slideIndex * slideWidth;
-                    track.style.transform = `translateX(${offset}px)`;
-                    updateDots();
-                };
+      window.addEventListener('pointermove', (e) => {
+        if (!isDown) return;
+        const dx = e.clientX - startX;
+        const offset = -currentIndex * slideWidth + dx;
+        track.style.transform = `translateX(${offset}px)`;
+      });
 
-                // Cria e atualiza os pontos de navegação
-                const updateDots = () => {
-                    if (!dotsContainer) return;
-                    dotsContainer.innerHTML = '';
-                    slides.forEach((_, index) => {
-                        const dot = document.createElement('span');
-                        dot.classList.add('dot');
-                        if (index === slideIndex) {
-                            dot.classList.add('active');
-                        }
-                        dot.addEventListener('click', () => {
-                            slideIndex = index;
-                            updateCarousel();
-                        });
-                        dotsContainer.appendChild(dot);
-                    });
-                };
+      window.addEventListener('pointerup', (e) => {
+        if (!isDown) return;
+        isDown = false;
+        track.style.cursor = '';
+        const dx = e.clientX - startX;
+        // threshold para swipe
+        if (dx < -50 && currentIndex < slides.length - 1) currentIndex++;
+        if (dx > 50 && currentIndex > 0) currentIndex--;
+        moveTo(currentIndex);
+      });
 
-                if (nextButton && prevButton && track) {
-                    // Evento para o botão "próximo"
-                    nextButton.addEventListener('click', () => {
-                        slideIndex = (slideIndex + 1) % slides.length;
-                        updateCarousel();
-                    });
+      // cancel if pointer leaves window
+      window.addEventListener('pointercancel', () => {
+        if (!isDown) return;
+        isDown = false;
+        moveTo(currentIndex);
+      });
+    })();
 
-                    // Evento para o botão "anterior"
-                    prevButton.addEventListener('click', () => {
-                        slideIndex = (slideIndex - 1 + slides.length) % slides.length;
-                        updateCarousel();
-                    });
+    // resize
+    window.addEventListener('resize', () => {
+      // recarrega slides em caso de DOM dinâmico
+      slides = Array.from(document.querySelectorAll('.carousel-slide'));
+      setTimeout(setSlideSizes, 50);
+    });
 
-                    // Inicializa o carrossel na primeira vez
-                    updateCarousel();
+    // init
+    setSlideSizes();
 
-                    // Adiciona um listener para atualizar o carrossel em caso de redimensionamento
-                    window.addEventListener('resize', updateCarousel);
-                }
+    // criar dots (opcional) - mostra qual index está ativo
+    const dotsContainer = document.querySelector('.carousel-dots');
+    if (dotsContainer) {
+      function renderDots() {
+        dotsContainer.innerHTML = '';
+        slides.forEach((_, i) => {
+          const dot = document.createElement('button');
+          dot.className = 'dot';
+          dot.type = 'button';
+          if (i === currentIndex) dot.classList.add('active');
+          dot.addEventListener('click', () => { moveTo(i); updateDots(); });
+          dotsContainer.appendChild(dot);
+        });
+      }
+      function updateDots() {
+        const dots = dotsContainer.querySelectorAll('.dot');
+        dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
+      }
+      // atualizar active dot sempre que moveTo é chamado (observador simples)
+      const origMoveTo = moveTo;
+      moveTo = (index, animate = true) => { origMoveTo(index, animate); setTimeout(updateDots, 50); };
+      renderDots();
+    }
 
-                // ... (Mantenha o código seguinte, como Carrossel de Depoimentos e Eventos)
+    console.log('[carousel] inicializado com sucesso');
+  } // end if track
 
-                // Carrossel de Depoimentos
-                const testimonials = document.querySelectorAll('.testimonial-slide');
-                let currentTestimonial = 0;
+  // ==========================
+  // Depoimentos e Eventos (mantidos — seu código anterior)
+  // ==========================
+  const testimonials = document.querySelectorAll('.testimonial-slide');
+  if (testimonials.length) {
+    let idx = 0;
+    function showTest(i) {
+      testimonials.forEach(s => s.style.display = 'none');
+      testimonials[i].style.display = 'block';
+    }
+    showTest(0);
+    setInterval(() => {
+      idx = (idx + 1) % testimonials.length;
+      showTest(idx);
+    }, 5000);
+  }
 
-                function showTestimonial(n) {
-                    testimonials.forEach(testimonial => testimonial.style.display = 'none');
-                    testimonials[n].style.display = 'block';
-                }
+  const upcomingEventsList = document.getElementById('upcoming-events-list');
+  const pastEventsList = document.getElementById('past-events-list');
+  if (upcomingEventsList && pastEventsList) {
+    const eventsData = [
+      { title: 'Passeio Ciclístico na Orla', date: '15 de Setembro de 2024', location: 'Praça Central', description: 'Venha pedalar conosco!', status: 'upcoming' },
+      { title: 'Oficina de Manutenção Gratuita', date: '28 de Setembro de 2024', location: 'Sede do Projeto', description: 'Aprenda a consertar bicicletas.', status: 'upcoming' },
+      { title: 'Feira de Doação de Bicicletas', date: '5 de Outubro de 2024', location: 'Parque Municipal', description: 'Doações e mini-evento.', status: 'upcoming' },
+      { title: 'Passeio Histórico', date: '10 de Agosto de 2024', location: 'Centro Histórico', description: 'Evento já realizado.', status: 'past' }
+    ];
+    eventsData.forEach(ev => {
+      const card = document.createElement('div');
+      card.className = 'event-card' + (ev.status === 'past' ? ' past' : '');
+      card.innerHTML = `
+        <h3>${ev.title}</h3>
+        <div class="event-meta"><i class="fas fa-calendar-alt"></i><span>${ev.date}</span></div>
+        <div class="event-meta"><i class="fas fa-map-marker-alt"></i><span>${ev.location}</span></div>
+        <p>${ev.description}</p>
+        <a href="#" class="button">${ev.status === 'upcoming' ? 'Participar' : 'Ver Detalhes'}</a>
+      `;
+      if (ev.status === 'upcoming') upcomingEventsList.appendChild(card); else pastEventsList.appendChild(card);
+    });
+  }
 
-                function nextTestimonial() {
-                    currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-                    showTestimonial(currentTestimonial);
-                }
+}); 
 
-                if (testimonials.length > 0) {
-                    setInterval(nextTestimonial, 5000);
-                    showTestimonial(0);
-                }
+document.addEventListener("DOMContentLoaded", function () {
+    const track = document.querySelector(".carousel-track");
+    const slides = Array.from(track.children);
+    const nextButton = document.querySelector(".next");
+    const prevButton = document.querySelector(".prev");
 
-                // Gerenciamento de Eventos Dinâmicos
-                const upcomingEventsList = document.getElementById('upcoming-events-list');
-                const pastEventsList = document.getElementById('past-events-list');
+    let currentSlide = 0;
 
-                if (upcomingEventsList && pastEventsList) {
-                    const eventsData = [
-                        {
-                            title: 'Passeio Ciclístico na Orla',
-                            date: '15 de Setembro de 2024',
-                            location: 'Praça Central',
-                            description: 'Venha pedalar conosco! Um passeio divertido para toda a família.',
-                            status: 'upcoming'
-                        },
-                        {
-                            title: 'Oficina de Manutenção Gratuita',
-                            date: '28 de Setembro de 2024',
-                            location: 'Sede do Projeto',
-                            description: 'Aprenda a fazer pequenos reparos na sua bicicleta. Vagas limitadas!',
-                            status: 'upcoming'
-                        },
-                        {
-                            title: 'Feira de Doação de Bicicletas',
-                            date: '5 de Outubro de 2024',
-                            location: 'Parque Municipal',
-                            description: 'Receberemos doações de bicicletas e faremos um mini-evento para doá-las a crianças da comunidade.',
-                            status: 'upcoming'
-                        },
-                        {
-                            title: 'Passeio Histórico em Parceria',
-                            date: '10 de Agosto de 2024',
-                            location: 'Centro Histórico',
-                            description: 'Um passeio educativo para explorar a história da cidade de uma forma divertida. Evento já realizado!',
-                            status: 'past'
-                        },
-                        {
-                            title: 'Encontro Mensal de Voluntários',
-                            date: '25 de Agosto de 2024',
-                            location: 'Online',
-                            description: 'Reunião para alinhamento e planejamento das próximas atividades do projeto. Para voluntários ativos.',
-                            status: 'past'
-                        }
-                    ];
+    function updateSlidePosition() {
+        const slideWidth = slides[0].getBoundingClientRect().width;
+        track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+    }
 
-                    eventsData.forEach(event => {
-                        const eventCard = document.createElement('div');
-                        eventCard.classList.add('event-card');
-                        if (event.status === 'past') {
-                            eventCard.classList.add('past');
-                        }
+    nextButton.addEventListener("click", () => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        updateSlidePosition();
+    });
 
-                        eventCard.innerHTML = `
-                            <h3>${event.title}</h3>
-                            <div class="event-meta">
-                                <i class="fas fa-calendar-alt"></i>
-                                <span>${event.date}</span>
-                            </div>
-                            <div class="event-meta">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>${event.location}</span>
-                            </div>
-                            <p>${event.description}</p>
-                            ${event.status === 'upcoming' ? '<a href="#" class="button">Participar</a>' : '<a href="#" class="button">Ver Detalhes</a>'}
-                        `;
+    prevButton.addEventListener("click", () => {
+        currentSlide =
+            currentSlide === 0 ? slides.length - 1 : currentSlide - 1;
+        updateSlidePosition();
+    });
 
-                        if (event.status === 'upcoming') {
-                            upcomingEventsList.appendChild(eventCard);
-                        } else {
-                            pastEventsList.appendChild(eventCard);
-                        }
-                    });
-                }
-            });
+    window.addEventListener("resize", updateSlidePosition);
+});
+

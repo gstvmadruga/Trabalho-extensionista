@@ -88,9 +88,17 @@ a:hover {
     margin-left: 15px;
 }
 
+
 .secondary-button:hover {
     background-color: var(--blue-dark);
     color: var(--white);
+}
+
+.secondary-button {
+    font-size: 1.1em;
+    padding: 15px 30px;
+    border-radius: 50px;
+    margin-top: 20px;
 }
 
 .text-center {
@@ -378,29 +386,27 @@ main {
 
 .carousel-container {
     position: relative;
-    max-width: 900px;
-    margin: 40px auto;
-    overflow: hidden;
-    padding: 0 50px; /* Adicionado para dar espaço aos botões */
+    width: 100%;
+    overflow: hidden; /* Impede que os slides escapem */
 }
 
 .carousel-track {
-    display: flex;
-    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    display: flex; /* Deixa os slides lado a lado */
+    transition: transform 0.5s ease-in-out;
 }
 
 .carousel-slide {
-    flex-shrink: 0;
-    width: 100%;
-    padding: 15px;
+    min-width: 100%; /* Cada slide ocupa a tela inteira */
     box-sizing: border-box;
+    padding: 20px;
 }
 
 .slide-content {
     background-color: var(--gray-light);
     border-radius: 15px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    padding: 30px;
+    padding-left: 60px;   
+    padding-right: 60px;  
     text-align: center;
     min-height: 250px;
     display: flex;
@@ -408,6 +414,9 @@ main {
     justify-content: center;
     border: 2px solid transparent;
     transition: border-color 0.3s ease;
+    background: #f3f3f3;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .slide-content:hover {
@@ -439,11 +448,13 @@ main {
 }
 
 .carousel-button.prev {
-    left: 0;
+    left: 20px;
 }
+
 .carousel-button.next {
-    right: 0;
+    right: 20px;
 }
+
 
 .carousel-dots {
     display: flex;
