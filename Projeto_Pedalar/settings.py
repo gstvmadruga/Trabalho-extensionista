@@ -24,7 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'app_main',  # seu app principal
+    'app_main',  # único app
 ]
 
 # ---------------------------------------------------
@@ -51,8 +51,8 @@ ROOT_URLCONF = 'Projeto_Pedalar.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # para templates globais
-        'APP_DIRS': True,                   # procura templates dentro de cada app
+        'DIRS': [BASE_DIR / 'templates'],  # templates globais opcionais
+        'APP_DIRS': True,  # vai procurar templates no app_main/templates/app_main/
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -80,7 +80,7 @@ DATABASES = {
 }
 
 # ---------------------------------------------------
-# PASSWORD VALIDATORS
+# PASSWORD VALIDATION
 # ---------------------------------------------------
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
@@ -102,7 +102,11 @@ USE_TZ = True
 # ---------------------------------------------------
 STATIC_URL = '/static/'
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'  # para collectstatic em produção
+# **Importante: Não usar STATICFILES_DIRS**
+# O Django já encontra automaticamente:
+# app_main/static/app_main/css/style.css
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # apenas para produção (collectstatic)
 
 # ---------------------------------------------------
 # MEDIA FILES
