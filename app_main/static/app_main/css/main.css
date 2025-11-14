@@ -1,15 +1,16 @@
-/* Página Principal - style-index.css */
-/* Importação de fonte do Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+style.css
+/* Importação de fonte do Google Fonts */
 
 :root {
-    --green: #1A237E;
-    --blue-dark: #4CAF50;
+    --green: #1A237E; /* Cor principal invertida para verde */
+    --blue-dark: #4CAF50; /* Cor de destaque invertida para azul escuro */
     --white: #FFFFFF;
     --gray-light: #f4f4f4;
     --gray-dark: #333;
 }
 
+/* Base styles */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -34,13 +35,13 @@ body {
 }
 
 h1, h2, h3 {
-    color: var(--green);
+    color: var(--green); /* Títulos agora são verdes */
     margin-bottom: 10px;
     text-align: center;
 }
 
 .blue-title {
-    color: var(--blue-dark);
+    color: var(--blue-dark); /* Títulos de destaque agora são azuis */
 }
 
 p {
@@ -50,7 +51,7 @@ p {
 
 a {
     text-decoration: none;
-    color: var(--blue-dark);
+    color: var(--blue-dark); /* Links agora são azuis */
     transition: color 0.3s ease;
 }
 
@@ -62,7 +63,7 @@ a:hover {
 .button, .cta-button {
     display: inline-block;
     padding: 12px 25px;
-    background-color: var(--blue-dark);
+    background-color: var(--blue-dark); /* Botões agora são azuis */
     color: var(--white);
     border-radius: 50px;
     font-weight: 600;
@@ -83,7 +84,7 @@ a:hover {
 
 .secondary-button {
     background-color: transparent;
-    border: 2px solid var(--blue-dark);
+    border: 2px solid var(--blue-dark); /* Borda agora é azul */
     color: var(--blue-dark);
     margin-left: 15px;
 }
@@ -97,9 +98,9 @@ a:hover {
     text-align: center;
 }
 
-/* Header e Navegação */
+/* Header and Navigation */
 header {
-    background-color: var(--green);
+    background-color: var(--green); /* Fundo do header agora é verde */
     color: var(--white);
     padding: 1rem 0;
     position: sticky;
@@ -136,6 +137,7 @@ header .container {
     color: var(--blue-dark);
 }
 
+/* Hamburger Menu for Mobile */
 .hamburger {
     display: none;
     background: none;
@@ -178,6 +180,34 @@ header .container {
     }
 }
 
+/* Main sections */
+main {
+    padding-bottom: 50px;
+}
+
+.page-header {
+    background-color: var(--green); /* Fundo do cabeçalho de página agora é verde */
+    color: var(--white);
+    padding: 60px 0;
+    text-align: center;
+}
+
+.page-header h1 {
+    color: var(--white);
+    font-size: 3rem;
+}
+
+.page-header p {
+    color: #ccc;
+    font-size: 1.2em;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.content-section {
+    padding: 60px 0;
+}
+
 /* Hero Section */
 .hero {
     height: 100vh;
@@ -217,6 +247,33 @@ header .container {
     max-width: 600px;
     margin: 0 auto 20px;
 }
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 1s ease-out;
+}
+
+.animate-slide-up {
+    animation: slideUp 0.8s ease-out;
+}
+
+.animate-slide-in {
+    animation: slideIn 1s ease-out;
+}
+
+.delay-1 { animation-delay: 0.5s; }
+.delay-2 { animation-delay: 1s; }
+.delay-3 { animation-delay: 1.5s; }
 
 /* Mission Section */
 .mission-section {
@@ -266,7 +323,7 @@ header .container {
 /* Impact Numbers Section */
 .impact-numbers {
     padding: 60px 0;
-    background-color: var(--green);
+    background-color: var(--green); /* Fundo agora é verde */
     color: var(--white);
 }
 
@@ -297,7 +354,7 @@ header .container {
 
 .icon-number {
     font-size: 3em;
-    color: var(--blue-dark);
+    color: var(--blue-dark); /* Ícones agora são azuis */
 }
 
 .counter {
@@ -312,6 +369,101 @@ header .container {
     color: #ccc;
     font-weight: 400;
     margin-top: 5px;
+}
+
+/* Modern Projects Carousel Section */
+/* Projects Carousel Section */
+.projects-carousel-section {
+    padding: 60px 0;
+}
+
+.carousel-container {
+    position: relative;
+    max-width: 900px;
+    margin: 40px auto;
+    overflow: hidden;
+    padding: 0 50px; /* Adicionado para dar espaço aos botões */
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.carousel-slide {
+    flex-shrink: 0;
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.slide-content {
+    background-color: var(--gray-light);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    padding: 30px;
+    text-align: center;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.slide-content:hover {
+    border-color: var(--blue-dark);
+}
+
+.slide-content h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(76, 175, 80, 0.8);
+    color: var(--white);
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 50%;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-button:hover {
+    background-color: var(--green);
+}
+
+.carousel-button.prev {
+    left: 0;
+}
+.carousel-button.next {
+    right: 0;
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: var(--blue-dark);
 }
 
 /* Testimonials Section */
@@ -331,6 +483,7 @@ header .container {
 .testimonial-slide {
     display: none;
     text-align: center;
+    animation: fadeIn 1s ease-in-out;
 }
 
 .testimonial-slide.active {
@@ -375,7 +528,7 @@ header .container {
     flex-wrap: wrap;
 }
 
-/* Footer */
+/* Better Footer */
 .better-footer {
     background: var(--green);
     color: var(--white);
@@ -478,4 +631,191 @@ header .container {
     color: #ccc;
     text-align: center;
     margin-top: 10px;
+}
+
+/* Melhora do Formulário de Contato */
+.contact-form-container {
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--gray-dark);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--blue-dark);
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 50px;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* Adicione estas classes ao seu arquivo style.css */
+
+/* Estilos para a página de eventos */
+.section-title-events {
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.event-card {
+    background-color: var(--gray-light);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 5px solid var(--blue-dark);
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.event-card h3 {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.event-meta {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    color: #666;
+}
+
+.event-meta i {
+    color: var(--blue-dark);
+    font-size: 1.2em;
+}
+
+.event-card .button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 10px;
+}
+
+/* Estilo para eventos passados */
+.event-card.past {
+    opacity: 0.6;
+    border-left: 5px solid #ccc;
+    background-color: #e9ecef;
+}
+
+.event-card.past h3,
+.event-card.past p,
+.event-card.past .event-meta i {
+    color: #777;
+}
+
+.event-card.past .button {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.event-card.past .button:hover {
+    background-color: #aaa;
+    transform: none;
+}
+.mt-60 {
+    margin-top: 60px;
+}
+/* Estilos para a página "Como Ajudar" */
+.help-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.help-card {
+    background-color: var(--gray-light);
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.help-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.help-card .card-icon {
+    font-size: 3em;
+    color: var(--blue-dark);
+    margin-bottom: 20px;
+    line-height: 1;
+}
+
+.help-card .card-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: var(--green);
+}
+
+.help-card p {
+    font-size: 0.95em;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.donation-highlight {
+    background-color: #f0f8ff;
+    border-left: 5px solid var(--blue-dark);
+    padding: 40px;
+    margin-top: 60px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.donation-highlight p {
+    max-width: 800px;
+    margin: 0 auto 20px;
+    text-align: center;
+    color: #333;
 }
