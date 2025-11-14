@@ -23,3 +23,6 @@ def voluntario(request):
 
 def parceiro(request):
     return render(request, 'app_main/parceiro.html')
+
+def doacao(request):
+    return render(request, 'app_main/doacao.html')

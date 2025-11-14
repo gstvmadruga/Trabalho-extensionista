@@ -904,3 +904,68 @@ main {
     margin-top: 15px;
     font-weight: 600;
 }
+
+
+.donation-section h3 {
+    margin-top: 30px;
+    color: var(--green);
+    font-size: 1.3em;
+}
+
+.donation-info p {
+    font-size: 1.1em;
+    margin: 8px 0;
+}
+
+.donation-message {
+    margin-top: 40px;
+    font-size: 1.1em;
+    color: var(--gray-dark);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+/* Espaçamento na página de doação */
+.doacao-container {
+    padding: 60px 0;
+}
+
+.doacao-container h2 {
+    margin-bottom: 20px;
+    color: var(--green);
+}
+
+.doacao-container p {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.doacao-container ul {
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+
+.doacao-spacer {
+    height: 50px; /* Espaço extra entre PIX e Bicicletas */
+}
+
+.tipo-doacao{
+
+    padding-top: 20px;
+    text-align: center;
+}
+
+.bicicletas{
+    padding-top: 40px;
+}
+
+.texto-bicicleta{
+    padding-top: 25px;
+
+
+}
+
+

@@ -4,21 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Projeto Pedalar - Como Ajudar</title>
-
-    <!-- CSS principal -->
+    <title>Projeto Pedalar - Doação</title>
     <link rel="stylesheet" href="{% static 'app_main/css/style.css' %}">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-          integrity="sha512-pVI48dBvT..."
-          crossorigin="anonymous"
-          referrerpolicy="no-referrer" />
 </head>
-
 <body>
+    <!-- Navbar -->
     <header>
         <div class="container">
             <a href="{% url 'app_main:index' %}" class="logo">Projeto Pedalar</a>
@@ -40,51 +30,34 @@
         </div>
     </header>
 
-    <main>
-        <section class="page-header">
-            <div class="container">
-                <h1>Faça a Diferença</h1>
-                <p>Seja parte da nossa causa. Seu apoio é fundamental para transformarmos mais vidas.</p>
-            </div>
-        </section>
+    <!-- Hero Section -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Faça sua Doação</h1>
+            <p>Ajude o Projeto Pedalar a transformar vidas. Aceitamos doações via PIX e doações de bicicletas.</p>
+        </div>
+    </section>
 
-        <section class="content-section">
-            <div class="container">
-                <h2 class="blue-title text-center">Formas de Apoio</h2>
-                <p class="text-center">Escolha a maneira que mais combina com você para pedalar conosco em direção a um futuro melhor.</p>
+    <!-- Informações de Doação -->
+    <section class="donation-section container">
+        <div class="donation-info">
+            <h3>Doação via PIX</h3>
+            <p class="tipo-doacao"><strong>Chave PIX:</strong> doacao@projetopedalar.org</p>
+            <p class="tipo-doacao"><strong>CNPJ:</strong> 59.454.310/0001-29</p>
+            <p class="tipo-doacao"><strong>Agência:</strong> 0000</p>
+            <p class="tipo-doacao"><strong>Conta:</strong> 00000-0</p>
 
-                <div class="help-grid">
-                    <div class="help-card">
-                        <div class="card-icon"><i class="fas fa-donate"></i></div>
-                        <h3 class="card-title">Faça uma Doação</h3>
-                        <p>Sua contribuição financeira é essencial para cobrir custos de manutenção, comprar peças e materiais para as oficinas.</p>
-                        <a href="{% url 'app_main:doacao' %}" class="button secondary-button">Doar Agora</a>
-                    </div>
-                    <div class="help-card">
-                        <div class="card-icon"><i class="fas fa-hands-helping"></i></div>
-                        <h3 class="card-title">Seja um Voluntário</h3>
-                        <p>Dê seu tempo e talento. Participe das oficinas, organize eventos ou ajude na nossa comunicação. Seu esforço é a força do nosso motor.</p>
-                        <!-- Link funcional para a página voluntário -->
-                        <a href="{% url 'app_main:voluntario' %}" class="button secondary-button">Quero Ser Voluntário</a>
-                    </div>
-                    <div class="help-card">
-                        <div class="card-icon"><i class="fas fa-handshake"></i></div>
-                        <h3 class="card-title">Torne-se um Parceiro</h3>
-                        <p>Sua empresa ou organização pode nos apoiar com patrocínios, doações de materiais ou serviços. Juntos, podemos ir mais longe.</p>
-                        <a href="{% url 'app_main:parceiro' %}" class="button secondary-button">Tornar-se Parceiro</a>
-                    </div>
-                </div>
+            <h3 class="bicicletas">Doação de Bicicletas</h3>
+            <p class="texto-bicicleta">Se você deseja doar bicicletas usadas ou novas, entre em contato conosco pelo e-mail <strong>jairoguisena@gmail.com</strong> ou telefone <strong>(21) 99867-8049</strong>. Recebemos bicicletas em bom estado para que possamos reformá-las e distribuir para os nossos projetos.</p>
+        </div>
 
-                <div class="donation-highlight">
-                    <h2 class="blue-title">Doação de Bicicletas</h2>
-                    <p>Além de doações em dinheiro, aceitamos bicicletas usadas em qualquer estado. Nossa equipe de voluntários irá restaurá-las e prepará-las para a doação, dando uma nova vida a elas e um novo futuro a uma criança.</p>
-                    <a href="{% url 'app_main:contato' %}" class="button">Doar uma Bicicleta</a>
-                </div>
-            </div>
-        </section>
+        <p class="donation-message">
+            Cada doação, seja em dinheiro via PIX ou em bicicletas, é essencial para ampliarmos nossas ações de educação, inclusão e bem-estar. 
+            Contamos com você para pedalar por um futuro melhor!
+        </p>
+    </section>
 
-    </main>
-
+    <!-- Footer -->
     <footer class="better-footer">
         <div class="container">
             <div class="footer-grid">
@@ -126,6 +99,6 @@
         </div>
     </footer>
 
-   <script src="{% static 'app_main/js/script.js' %}"></script>
+    <script src="{% static 'app_main/js/script.js' %}"></script>
 </body>
 </html>
