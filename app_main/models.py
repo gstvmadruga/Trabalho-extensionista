@@ -6,6 +6,18 @@ class Voluntario(models.Model):
     email = models.EmailField()
     telefone = models.CharField(max_length=20, blank=True, null=True)
     data_cadastro = models.DateTimeField(auto_now_add=True)
+    mensagem = models.TextField()
+
+    def __str__(self):
+        return self.nome
+    
+class Parceiro(models.Model):
+    nome = models.CharField(max_length=100)
+    email = models.EmailField()
+    telefone = models.CharField(max_length=20, blank=True)
+    empresa = models.CharField(max_length=100, blank=True)
+    mensagem = models.TextField(blank=True)
+    data_criacao = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.nome

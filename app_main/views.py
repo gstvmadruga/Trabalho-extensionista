@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .forms import VoluntarioForm, ParceiroForm
+
 
 def index(request):
     return render(request, 'app_main/index.html')
@@ -18,11 +20,36 @@ def como_ajudar(request):
 def contato(request):
     return render(request, 'app_main/contato.html')
 
+
 def voluntario(request):
-    return render(request, 'app_main/voluntario.html')
+    if request.method == 'POST':
+        form = VoluntarioForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'app_main/voluntario.html', {
+                'form': VoluntarioForm(),   # limpa o form
+                'show_modal': True         # ativa o modal
+            })
+    else:
+        form = VoluntarioForm()
+
+    return render(request, 'app_main/voluntario.html', {'form': form})
+
 
 def parceiro(request):
-    return render(request, 'app_main/parceiro.html')
+    if request.method == 'POST':
+        form = ParceiroForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'app_main/parceiro.html', {
+                'form': ParceiroForm(),
+                'show_modal': True
+            })
+    else:
+        form = ParceiroForm()
+
+    return render(request, 'app_main/parceiro.html', {'form': form})
+
 
 def doacao(request):
     return render(request, 'app_main/doacao.html')

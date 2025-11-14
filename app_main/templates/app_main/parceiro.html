@@ -39,43 +39,21 @@
     </section>
 
     <!-- Formulário de Parceria -->
-    <section class="volunteer-form-container">
-        <h2>Formulário de Parceria</h2>
-        <form id="parceiro-form">
-            <div class="form-group">
-                <label for="nome">Nome completo</label>
-                <input type="text" id="nome" name="nome" required>
-            </div>
+     <section class="volunteer-form-container">
+    <h2>Junte-se a nós como parceiro</h2>
+    <form id="voluntario-form">
+        {% csrf_token %}
+        {{ form.as_p }}
 
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-
-            <div class="form-group">
-                <label for="telefone">Telefone</label>
-                <input type="tel" id="telefone" name="telefone">
-            </div>
-
-            <div class="form-group">
-                <label for="empresa">Empresa / Organização</label>
-                <input type="text" id="empresa" name="empresa" required>
-            </div>
-
-            <div class="form-group">
-                <label for="mensagem">Mensagem</label>
-                <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
-            </div>
-
-            <button type="submit" class="button">Enviar</button>
-        </form>
-    </section>
+        <button type="submit" class="button">Enviar</button>
+    </form>
+</section>
 
     <!-- Modal de Agradecimento -->
 <div id="thankyou-modal" class="modal" style="display:none;">
   <div class="modal-content">
     <span class="close">&times;</span>
-    <p>Obrigado por se tornar parceiro! Entraremos em contato em breve.</p>
+    <p>Obrigado por querer nos ajudar! Entraremos em contato em breve.</p>
   </div>
 </div>
 
@@ -120,6 +98,6 @@
         </div>
     </footer>
 
-    <script src="{% static 'app_main/js/parceiro.js' %}"></script>
+    <script src="{% static 'app_main/js/script.js' %}"></script>
 </body>
 </html>

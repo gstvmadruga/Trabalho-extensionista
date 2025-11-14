@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.admin import AdminSite
-from .models import Voluntario, Projeto, Comunicado
+from .models import Voluntario, Projeto, Comunicado, Parceiro
 
 # Personaliza títulos
 admin.site.site_header = "Administração Projeto Pedalar"        
@@ -24,6 +24,12 @@ class VoluntarioAdmin(admin.ModelAdmin):
     list_display = ('nome', 'email', 'telefone', 'data_cadastro')
     search_fields = ('nome', 'email')
     list_filter = ('data_cadastro',)
+
+@admin.register(Parceiro)
+class ParceiroAdmin(admin.ModelAdmin):
+    list_display = ('nome', 'email', 'empresa', 'telefone', 'data_criacao')
+    search_fields = ('nome', 'email', 'empresa')
+    list_filter = ('data_criacao',)
     
 
 @admin.register(Projeto)

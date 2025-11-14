@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
   console.log('[script.js] DOMContentLoaded');
 
@@ -335,32 +336,8 @@ if (form && modal && closeBtn) {
 }
 
 
+
+
 });
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Menu Hamburger
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
-
-    if (hamburger && navMenu) {
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-    }
-
-    // Formulário de Parceria
-    const form = document.getElementById('parceiro-form');
-    const msg = document.getElementById('form-msg');
-
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        // Simulação de envio
-        msg.textContent = "Obrigado por se tornar parceiro! Entraremos em contato em breve.";
-        form.reset();
-    });
-});
-
 
 
