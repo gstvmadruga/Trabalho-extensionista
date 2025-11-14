@@ -30,21 +30,21 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',  
-    
-    # Seus apps
-    'app_main',
-    'app_eventos',
-    'app_projetos',
-    'app_ajudar',   # se existir
-]
+    'django.contrib.staticfiles',
 
+    # seus apps
+    'app_main',
+    'app_projetos',
+    'app_eventos',
+    'app_ajudar',
+]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -63,8 +63,8 @@ ROOT_URLCONF = 'Projeto_Pedalar.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],  # vazio se você usa os templates dentro de cada app
-        'APP_DIRS': True,  # precisa estar como True
+        'DIRS': [BASE_DIR / 'templates'],
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -76,8 +76,18 @@ TEMPLATES = [
     },
 ]
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 WSGI_APPLICATION = 'Projeto_Pedalar.wsgi.application'
+
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',     # se tiver static global
+]
 
 
 # Database
@@ -125,19 +135,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-
 STATIC_URL = '/static/'
-
-STATICFILES_DIRS = [
-    BASE_DIR / "app_main" / "static",
-    BASE_DIR / "app_ajudar" / "static",
-    BASE_DIR / "app_eventos" / "static",
-    BASE_DIR / "app_projetos" / "static",
-    BASE_DIR / "static"
-]
-STATIC_ROOT = BASE_DIR / "staticfiles"
-
+STATICFILES_DIRS = [ BASE_DIR / 'static' ]           # para arquivos de projeto
+STATIC_ROOT = BASE_DIR / 'staticfiles'               # onde collectstatic guarda em produção
 
 
 

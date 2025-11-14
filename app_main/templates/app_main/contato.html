@@ -1,127 +1,151 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contato - Projeto Pedalar</title>
-    <link rel="stylesheet" href="{% static 'app_main/css/style-contato.css' %}">
+
+    <link rel="stylesheet" href="{% static 'app_main/css/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <header>
+
+<header>
+    <div class="container">
+        <a href="{% url 'app_main:index' %}" class="logo">Projeto Pedalar</a>
+        <nav class="nav-menu">
+            <button class="hamburger" aria-label="Abrir menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul>
+                <li><a href="{% url 'app_main:index' %}">Início</a></li>
+                <li><a href="{% url 'app_main:sobre' %}">Sobre Nós</a></li>
+                <li><a href="{% url 'app_projetos:index' %}">Nossos Projetos</a></li>
+                <li><a href="{% url 'app_eventos:index' %}">Eventos</a></li>
+                <li><a href="{% url 'app_ajudar:index' %}">Como Ajudar</a></li>
+                <li><a href="{% url 'app_main:contato' %}" class="active">Contato</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="page-header">
         <div class="container">
-            <a href="{% url 'index' %}" class="logo">Projeto Pedalar</a>
-            <nav class="nav-menu">
-                <button class="hamburger" aria-label="Abrir menu">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </button>
-                <ul>
-                    <li><a href="{% url 'index' %}">Início</a></li>
-                    <li><a href="{% url 'sobre' %}">Sobre Nós</a></li>
-                    <li><a href="{% url 'projetos' %}">Nossos Projetos</a></li>
-                    <li><a href="{% url 'eventos' %}">Eventos</a></li>
-                    <li><a href="{% url 'como_ajudar' %}">Como Ajudar</a></li>
-                    <li><a href="{% url 'contato' %}">Contato</a></li>
-                </ul>
-            </nav>
+            <h1>Fale Conosco</h1>
+            <p>Estamos sempre abertos a novas ideias, parcerias e doações. Mande uma mensagem!</p>
         </div>
-    </header>
+    </section>
 
-    <main>
-        <section class="page-header">
-            <div class="container">
-                <h1>Fale Conosco</h1>
-                <p>Estamos sempre abertos a novas ideias, parcerias e doações. Mande uma mensagem!</p>
-            </div>
-        </section>
-
-        <section class="content-section">
-            <div class="container">
-                <div class="contact-grid">
-                    <div class="contact-info">
-                        <h2 class="blue-title">Informações de Contato</h2>
-                        <div class="info-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <p>Rua dos Ciclistas, 123 - Centro<br>Rio de Janeiro, RJ</p>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-envelope"></i>
-                            <p>contato@projetopedalar.org</p>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-phone-alt"></i>
-                            <p>(21) 99999-9999</p>
-                        </div>
-                    </div>
-                    <div class="contact-form-container">
-                        <h2 class="blue-title">Envie uma Mensagem</h2>
-                        <form id="contact-form">
-                            <div class="form-group">
-                                <label for="name">Nome Completo</label>
-                                <input type="text" id="name" name="name" placeholder="Seu nome" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">E-mail</label>
-                                <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Mensagem</label>
-                                <textarea id="message" name="message" rows="5" placeholder="Sua mensagem..." required></textarea>
-                            </div>
-                            <button type="submit" class="button">Enviar Mensagem</button>
-                        </form>
-                        <div id="form-message"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="better-footer">
+    <section class="content-section">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="{% url 'index' %}" class="logo">Projeto Pedalar</a>
-                    <p>Transformando vidas, uma pedalada de cada vez. Nosso compromisso é com a educação, a inclusão e a felicidade.</p>
+            <div class="contact-grid">
+
+                <!-- Informações de Contato -->
+                <div class="contact-info">
+                    <h2 class="blue-title">Informações de Contato</h2>
+
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Rua dos Ciclistas, 123 - Centro<br>Rio de Janeiro, RJ</p>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>contato@projetopedalar.org</p>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <p>(21) 99999-9999</p>
+                    </div>
                 </div>
-                <div class="footer-nav">
-                    <h4>Navegue</h4>
-                    <ul>
-                        <li><a href="{% url 'sobre' %}">Sobre Nós</a></li>
-                        <li><a href="{% url 'projetos' %}">Nossos Projetos</a></li>
-                        <li><a href="{% url 'eventos' %}">Eventos</a></li>
-                        <li><a href="{% url 'como_ajudar' %}">Como Ajudar</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contact">
-                    <h4>Contato</h4>
-                    <p>Rua dos Ciclistas, 123 - Centro<br>Rio de Janeiro, RJ</p>
-                    <p>E-mail: contato@projetopedalar.org<br>Telefone: (21) 99999-9999</p>
-                </div>
-                <div class="footer-newsletter">
-                    <h4>Assine nossa Newsletter</h4>
-                    <p>Receba as últimas notícias e novidades do projeto!</p>
-                    <form id="newsletter-form">
-                        <input type="email" placeholder="Seu e-mail" required>
-                        <button type="submit" class="button">Assinar</button>
+
+                <!-- Formulário -->
+                <div class="contact-form-container">
+                    <h2 class="blue-title">Envie uma Mensagem</h2>
+
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Nome Completo</label>
+                            <input type="text" id="name" name="name" placeholder="Seu nome" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Sua mensagem..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="button">Enviar Mensagem</button>
                     </form>
+
+                    <div id="form-message"></div>
                 </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="footer-social">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                </div>
-                <p class="copyright">&copy; 2024 Projeto Pedalar. Todos os direitos reservados.</p>
+
             </div>
         </div>
-    </footer>
+    </section>
+</main>
 
-    <script src="{% static 'app_main/js/script.js' %}"></script>
+<footer class="better-footer">
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div class="footer-brand">
+                <a href="{% url 'app_main:index' %}" class="logo">Projeto Pedalar</a>
+                <p>Transformando vidas, uma pedalada de cada vez. Nosso compromisso é com a educação, a inclusão e a felicidade.</p>
+            </div>
+
+            <div class="footer-nav">
+                <h4>Navegue</h4>
+                <ul>
+                    <li><a href="{% url 'app_main:sobre' %}">Sobre Nós</a></li>
+                    <li><a href="{% url 'app_projetos:index' %}">Nossos Projetos</a></li>
+                    <li><a href="{% url 'app_eventos:index' %}">Eventos</a></li>
+                    <li><a href="{% url 'app_ajudar:index' %}">Como Ajudar</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h4>Contato</h4>
+                <p>Rua dos Ciclistas, 123 - Centro<br>Rio de Janeiro, RJ</p>
+                <p>E-mail: contato@projetopedalar.org<br>Telefone: (21) 99999-9999</p>
+            </div>
+
+            <div class="footer-newsletter">
+                <h4>Assine nossa Newsletter</h4>
+                <p>Receba as últimas notícias e novidades do projeto!</p>
+
+                <form id="newsletter-form">
+                    <input type="email" placeholder="Seu e-mail" required>
+                    <button type="submit" class="button">Assinar</button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-social">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+
+            <p class="copyright">&copy; 2024 Projeto Pedalar. Todos os direitos reservados.</p>
+        </div>
+
+    </div>
+</footer>
+
+<script src="{% static 'app_main/js/script.js' %}"></script>
 </body>
 </html>
