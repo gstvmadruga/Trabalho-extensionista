@@ -24,6 +24,7 @@ class VoluntarioAdmin(admin.ModelAdmin):
     list_display = ('nome', 'email', 'telefone', 'data_cadastro')
     search_fields = ('nome', 'email')
     list_filter = ('data_cadastro',)
+    
 
 @admin.register(Projeto)
 class ProjetoAdmin(admin.ModelAdmin):
