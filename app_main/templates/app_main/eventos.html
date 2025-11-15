@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eventos - Projeto Pedalar</title>
 
-    <!-- CSS correto -->
+    <!-- CSS -->
     <link rel="stylesheet" href="{% static 'app_main/css/style.css' %}">
-
 
     <!-- Font Awesome -->
     <link rel="stylesheet"
@@ -16,16 +15,21 @@
 </head>
 
 <body>
+    <!-- HEADER -->
     <header>
-        <div class="container">
+        <div class="container header-container">
             <a href="{% url 'app_main:index' %}" class="logo">Projeto Pedalar</a>
+
             <nav class="nav-menu">
+                <!-- Botão mobile -->
                 <button class="hamburger" aria-label="Abrir menu">
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
                 </button>
-                <ul>
+
+                <!-- Menu -->
+                <ul class="nav-links">
                     <li><a href="{% url 'app_main:index' %}">Início</a></li>
                     <li><a href="{% url 'app_main:sobre' %}">Sobre Nós</a></li>
                     <li><a href="{% url 'app_main:projetos' %}">Nossos Projetos</a></li>
@@ -37,7 +41,9 @@
         </div>
     </header>
 
+    <!-- MAIN -->
     <main>
+        <!-- Cabeçalho da página -->
         <section class="page-header">
             <div class="container">
                 <h1>Próximos Eventos</h1>
@@ -45,24 +51,35 @@
             </div>
         </section>
 
+        <!-- Seção de Eventos -->
         <section class="content-section">
             <div class="container">
                 <h2 class="section-title-events">Próximos Eventos</h2>
+
+                <!-- Grid eventos futuros -->
                 <div class="events-grid" id="upcoming-events-list"></div>
 
                 <h2 class="section-title-events mt-60">Eventos Anteriores</h2>
+
+                <!-- Grid eventos passados -->
                 <div class="events-grid" id="past-events-list"></div>
             </div>
         </section>
     </main>
 
+    <!-- FOOTER -->
     <footer class="better-footer">
         <div class="container">
             <div class="footer-grid">
+
                 <div class="footer-brand">
                     <a href="{% url 'app_main:index' %}" class="logo">Projeto Pedalar</a>
-                    <p>Transformando vidas, uma pedalada de cada vez. Nosso compromisso é com a educação, a inclusão e a felicidade.</p>
+                    <p>
+                        Transformando vidas, uma pedalada de cada vez.
+                        Nosso compromisso é com a educação, a inclusão e a felicidade.
+                    </p>
                 </div>
+
                 <div class="footer-nav">
                     <h4>Navegue</h4>
                     <ul>
@@ -72,11 +89,13 @@
                         <li><a href="{% url 'app_main:como_ajudar' %}">Como Ajudar</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-contact">
                     <h4>Contato</h4>
                     <p>Rua Vereador Wilton Barcelos, 30 B - Mata Paca<br>Niterói, RJ</p>
                     <p>E-mail: jairoguisena@gmail.com<br>Telefone: (21) 99867-8049</p>
                 </div>
+
                 <div class="footer-newsletter">
                     <h4>Assine nossa Newsletter</h4>
                     <p>Receba as últimas notícias e novidades do projeto!</p>
@@ -85,7 +104,9 @@
                         <button type="submit" class="button">Assinar</button>
                     </form>
                 </div>
+
             </div>
+
             <div class="footer-bottom">
                 <div class="footer-social">
                     <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>

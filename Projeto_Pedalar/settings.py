@@ -13,11 +13,14 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "fallback-secret-key")  # evitar crash
 
 DEBUG = os.environ.get("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = [
-    os.environ.get("ALLOWED_HOSTS", "localhost"),
-    "127.0.0.1",
-    "localhost",
-]
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(",")
+
+if not ALLOWED_HOSTS or ALLOWED_HOSTS == [""]:
+    ALLOWED_HOSTS = [
+        "localhost",
+        "127.0.0.1",
+        "Projeto Pedalar.onrender.com",
+    ]
 
 # ---------------------------------------------------
 # INSTALLED APPS
