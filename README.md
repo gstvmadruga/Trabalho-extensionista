@@ -39,6 +39,7 @@ JavaScript
 
 Font Awesome
 
+---
 📁 Estrutura Geral do Projeto
 
 /app_main/ – Aplicação principal do Django
@@ -50,3 +51,40 @@ Font Awesome
 /media/ – Uploads (se aplicável)
 
 manage.py – Script principal do Django
+
+---
+
+## ▶️ Como Executar o Projeto
+
+1. Clone este repositório:
+
+   ```bash
+   git clone https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git
+   ```
+2. Entre na pasta do projeto:
+
+   ```bash
+   cd nome_do_projeto
+   ```
+3. Crie e ative um ambiente virtual:
+
+   ```bash
+   python -m venv venv
+   source venv/bin/activate   # Linux/Mac
+   venv\Scripts\activate      # Windows
+   ```
+4. Instale as dependências:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+5. Execute as migrações:
+
+   ```bash
+   python manage.py migrate
+   ```
+6. Inicie o servidor:
+
+   ```bash
+   python manage.py runserver
+   ```
