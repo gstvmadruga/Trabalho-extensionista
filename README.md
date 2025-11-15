@@ -81,7 +81,7 @@ manage.py – Script principal do Django
 2. Entre na pasta do projeto:
 
    ```bash
-   cd nome_do_projeto
+   cd https://github.com/gstvmadruga/Trabalho-extensionista
    ```
 3. Crie e ative um ambiente virtual:
 
