@@ -44,7 +44,7 @@
 
     <section class="volunteer-form-container">
     <h2>Junte-se a nós como voluntário</h2>
-    <form id="voluntario-form">
+    <form id="voluntario-form" method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="button">Enviar</button>

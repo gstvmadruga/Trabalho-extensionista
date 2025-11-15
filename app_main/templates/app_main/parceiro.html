@@ -46,7 +46,7 @@
     <!-- Formulário de Parceria -->
      <section class="volunteer-form-container">
     <h2>Junte-se a nós como parceiro</h2>
-    <form id="voluntario-form">
+    <form id="voluntario-form" method="post">
         {% csrf_token %}
         {{ form.as_p }}
 
