@@ -23,4 +23,30 @@ Estrutura de páginas organizada por seções
 
 Layout responsivo
 
+---
 🛠️ Tecnologias Utilizadas
+Python 3
+
+Django
+
+SQLite
+
+HTML5
+
+CSS3
+
+JavaScript
+
+Font Awesome
+
+📁 Estrutura Geral do Projeto
+
+/app_main/ – Aplicação principal do Django
+
+/templates/ – Modelos HTML do site
+
+/static/ – Arquivos estáticos (CSS, JS, imagens)
+
+/media/ – Uploads (se aplicável)
+
+manage.py – Script principal do Django
