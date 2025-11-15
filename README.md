@@ -76,7 +76,7 @@ manage.py – Script principal do Django
 1. Clone este repositório:
 
    ```bash
-   git clone https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git
+   git clone https://github.com/gstvmadruga/Trabalho-extensionista.git
    ```
 2. Entre na pasta do projeto:
 
