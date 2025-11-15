@@ -15,5 +15,7 @@ urlpatterns = [
     path('parceiro/', views.parceiro, name='parceiro'),
     path('doacao/', views.doacao, name='doacao'), 
 
+    
+
 ]
 
