@@ -10,3 +10,16 @@ Este repositório contém o código-fonte do Projeto Pedalar, uma iniciativa ext
 Além do visual renovado, o foco é entregar funcionalidade, simplicidade e organização. O site foi estruturado para ser totalmente navegável, acessível e adaptado às necessidades da equipe responsável.
 
 ---
+🔍 Funcionalidades
+
+Página inicial institucional com informações sobre o projeto
+
+Sistema de cadastro de voluntários
+
+Área administrativa para gerenciamento de conteúdos
+
+Estrutura de páginas organizada por seções
+
+Layout responsivo
+
+🛠️ Tecnologias Utilizadas
