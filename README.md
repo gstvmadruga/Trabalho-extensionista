@@ -26,18 +26,25 @@ Layout responsivo
 
 ---
 🛠️ Tecnologias Utilizadas
+<img width="67" height="20" alt="image" src="https://github.com/user-attachments/assets/0a493e80-c69c-423d-ad07-a2ab60c8b986" />
 Python 3
 
+<img width="67" height="20" alt="image" src="https://github.com/user-attachments/assets/103922dc-a83b-4507-ad69-20e608e7dcf8" />
 Django
 
+<img width="65" height="20" alt="image" src="https://github.com/user-attachments/assets/6504770d-b113-4268-91ea-de636fc70c8c" />
 SQLite
 
+<img width="65" height="20" alt="image" src="https://github.com/user-attachments/assets/5300be94-3c0c-4dd6-8782-7001771676d3" />
 HTML5
 
+<img width="39" height="20" alt="image" src="https://github.com/user-attachments/assets/951a9430-a6c7-42ec-887f-fa68e515285c" />
 CSS3
 
+<img width="85" height="20" alt="image" src="https://github.com/user-attachments/assets/6cc047c3-132b-4692-aa28-19908b17058e" />
 JavaScript
 
+<img width="109" height="20" alt="image" src="https://github.com/user-attachments/assets/25d6d20d-540b-415b-8b49-f8ba39fb0335" />
 Font Awesome
 
 ---
