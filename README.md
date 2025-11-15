@@ -14,15 +14,15 @@ Além do visual renovado, o foco é entregar funcionalidade, simplicidade e orga
 ---
 🔍 Funcionalidades
 
-Página inicial institucional com informações sobre o projeto
+- Página inicial institucional com informações sobre o projeto
 
-Sistema de cadastro de voluntários
+- Sistema de cadastro de voluntários
 
-Área administrativa para gerenciamento de conteúdos
+- Área administrativa para gerenciamento de conteúdos
 
-Estrutura de páginas organizada por seções
+- Estrutura de páginas organizada por seções
 
-Layout responsivo
+- Layout responsivo
 
 ---
 🛠️ Tecnologias Utilizadas
