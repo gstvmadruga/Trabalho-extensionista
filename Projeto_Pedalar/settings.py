@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY
 # ---------------------------------------------------
 SECRET_KEY = 'django-insecure-=g16h!2h!+1d1b6gdz6#n6c)0n#%1t-fdw+b(vgaetdolx2g@%'
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'gstvmadruga.pythonanywhere.com']
 
 
@@ -111,14 +111,14 @@ STATIC_URL = '/static/'
 # app_main/static/app_main/css/style.css
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'  # apenas para produção (collectstatic)
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 # ---------------------------------------------------
 # MEDIA FILES
 # ---------------------------------------------------
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # ---------------------------------------------------
 # DEFAULT AUTO FIELD
