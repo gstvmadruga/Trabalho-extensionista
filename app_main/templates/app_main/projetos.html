@@ -16,26 +16,31 @@
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <a href="{% url 'app_main:index' %}" class="logo">Projeto Pedalar</a>
-            <nav class="nav-menu">
-                <button class="hamburger" aria-label="Abrir menu">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </button>
-                <ul>
-                    <li><a href="{% url 'app_main:index' %}">Início</a></li>
-                    <li><a href="{% url 'app_main:sobre' %}">Sobre Nós</a></li>
-                    <li><a href="{% url 'app_main:projetos' %}">Nossos Projetos</a></li>
-                    <li><a href="{% url 'app_main:eventos' %}">Eventos</a></li>
-                    <li><a href="{% url 'app_main:como_ajudar' %}">Como Ajudar</a></li>
-                    <li><a href="{% url 'app_main:contato' %}">Contato</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<header>
+    <div class="container">
+        <a href="{% url 'app_main:index' %}" class="logo">Projeto Pedalar</a>
+
+        <!-- HAMBURGER FORA DO NAV -->
+        <button class="hamburger" aria-label="Abrir menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+
+        <!-- MENU -->
+        <nav class="nav-menu">
+            <ul class="nav-links">
+                <li><a href="{% url 'app_main:index' %}">Início</a></li>
+                <li><a href="{% url 'app_main:sobre' %}">Sobre Nós</a></li>
+                <li><a href="{% url 'app_main:projetos' %}">Nossos Projetos</a></li>
+                <li><a href="{% url 'app_main:eventos' %}">Eventos</a></li>
+                <li><a href="{% url 'app_main:como_ajudar' %}" class="active">Como Ajudar</a></li>
+                <li><a href="{% url 'app_main:contato' %}">Contato</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
 
     <main>
         <section class="page-header">
