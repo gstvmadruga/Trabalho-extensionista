@@ -7,13 +7,17 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # ---------------------------------------------------
-# SECURITY
+# SECURITY (usando variáveis de ambiente do Render)
 # ---------------------------------------------------
-SECRET_KEY = 'django-insecure-=g16h!2h!+1d1b6gdz6#n6c)0n#%1t-fdw+b(vgaetdolx2g@%'
-DEBUG = False
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'gstvmadruga.pythonanywhere.com']
+SECRET_KEY = os.environ.get("SECRET_KEY", "fallback-secret-key")  # evitar crash local
 
+DEBUG = os.environ.get("DEBUG", "False") == "True"
 
+ALLOWED_HOSTS = [
+    os.environ.get("ALLOWED_HOSTS", "localhost"),
+    "127.0.0.1",
+    "localhost",
+]
 
 # ---------------------------------------------------
 # INSTALLED APPS
@@ -26,7 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'app_main',  # único app
+    'app_main',
 ]
 
 # ---------------------------------------------------
@@ -34,13 +38,16 @@ INSTALLED_APPS = [
 # ---------------------------------------------------
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+
+    # WhiteNoise precisa vir IMEDIATAMENTE após SecurityMiddleware
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 # ---------------------------------------------------
@@ -54,8 +61,8 @@ ROOT_URLCONF = 'Projeto_Pedalar.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # templates globais opcionais
-        'APP_DIRS': True,  # vai procurar templates no app_main/templates/app_main/
+        'DIRS': [BASE_DIR / 'templates'],
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -97,7 +104,6 @@ AUTH_PASSWORD_VALIDATORS = [
 # ---------------------------------------------------
 LANGUAGE_CODE = 'pt-br'
 TIME_ZONE = 'America/Sao_Paulo'
-
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
@@ -110,22 +116,11 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-
-# **Importante: Não usar STATICFILES_DIRS**
-# O Django já encontra automaticamente:
-# app_main/static/app_main/css/style.css
-
-STATIC_ROOT = BASE_DIR / 'staticfiles'  # apenas para produção (collectstatic)
-
-
 # ---------------------------------------------------
 # MEDIA FILES
 # ---------------------------------------------------
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-
 # ---------------------------------------------------
-# DEFAULT AUTO FIELD
-# ---------------------------------------------------
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# DEFAULT
