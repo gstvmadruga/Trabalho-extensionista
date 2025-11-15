@@ -1,7 +1,8 @@
 🚴‍♂️ Projeto Pedalar – Pedalando para um Futuro Melhor
 
 🌐 Acesse o Site
-Clique aqui para ver o projeto online
+Clique aqui para ver o projeto online([🌐 Acesse o Site  
+Clique aqui para ver o projeto online](https://seu-site-aqui.com))
 
 ---
 
