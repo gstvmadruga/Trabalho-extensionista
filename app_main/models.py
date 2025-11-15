@@ -16,12 +16,12 @@ class Parceiro(models.Model):
     email = models.EmailField()
     telefone = models.CharField(max_length=20, blank=True)
     empresa = models.CharField(max_length=100, blank=True)
+    cnpj = models.CharField(max_length=18, unique=True)
     mensagem = models.TextField(blank=True)
     data_criacao = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.nome
-
 
 class Projeto(models.Model):
     titulo = models.CharField(max_length=200)

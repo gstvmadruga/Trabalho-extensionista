@@ -10,4 +10,4 @@ class VoluntarioForm(forms.ModelForm):
 class ParceiroForm(forms.ModelForm):
     class Meta:
         model = Parceiro
-        fields = ['nome', 'email', 'telefone', 'empresa', 'mensagem']
+        fields = ['nome', 'email', 'telefone', 'empresa', 'cnpj' ,'mensagem', ]
