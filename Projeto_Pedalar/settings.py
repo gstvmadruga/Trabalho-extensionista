@@ -111,14 +111,14 @@ STATIC_URL = '/static/'
 # app_main/static/app_main/css/style.css
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'  # apenas para produção (collectstatic)
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 # ---------------------------------------------------
 # MEDIA FILES
 # ---------------------------------------------------
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # ---------------------------------------------------
 # DEFAULT AUTO FIELD
