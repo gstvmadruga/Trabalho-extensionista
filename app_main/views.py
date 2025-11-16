@@ -21,14 +21,14 @@ def contato(request):
     return render(request, 'app_main/contato.html')
 
 
-def voluntario_view(request):
+def voluntario(request):
     if request.method == 'POST':
         form = VoluntarioForm(request.POST)
         if form.is_valid():
             form.save()
             return render(request, 'app_main/voluntario.html', {
-                'form': VoluntarioForm(),
-                'success': True
+                'form': VoluntarioForm(),   # limpa o form
+                'show_modal': True         # ativa o modal
             })
     else:
         form = VoluntarioForm()
@@ -36,24 +36,19 @@ def voluntario_view(request):
     return render(request, 'app_main/voluntario.html', {'form': form})
 
 
-from django.shortcuts import render
-from .forms import ParceiroForm
+def parceiro(request):
+    if request.method == 'POST':
+        form = ParceiroForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'app_main/parceiro.html', {
+                'form': ParceiroForm(),
+                'show_modal': True
+            })
+    else:
+        form = ParceiroForm()
 
-def parceiro_view(request):
-    form = ParceiroForm(request.POST or None)
-    show_modal = False
-    if request.method == 'POST' and form.is_valid():
-        form.save()
-        show_modal = True
-        form = ParceiroForm()  # reset form
-
-    context = {
-        'form': form,
-        'show_modal': show_modal,
-    }
-    return render(request, 'app_main/parceiro.html', context)
-
-
+    return render(request, 'app_main/parceiro.html', {'form': form})
 
 
 def doacao(request):
