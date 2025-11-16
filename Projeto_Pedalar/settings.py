@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # ---------------------------------------------------
 SECRET_KEY = 'django-insecure-=g16h!2h!+1d1b6gdz6#n6c)0n#%1t-fdw+b(vgaetdolx2g@%'
 DEBUG = True
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'gstvmadruga.pythonanywhere.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'projeto-pedalar.onrender.com']
 
 
 
@@ -106,9 +106,9 @@ USE_TZ = True
 # ---------------------------------------------------
 STATIC_URL = '/static/'
 
-# **Importante: Não usar STATICFILES_DIRS**
-# O Django já encontra automaticamente:
-# app_main/static/app_main/css/style.css
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'  # apenas para produção (collectstatic)
 
