@@ -19,7 +19,7 @@ if not ALLOWED_HOSTS or ALLOWED_HOSTS == [""]:
     ALLOWED_HOSTS = [
         "localhost",
         "127.0.0.1",
-        "Projeto Pedalar.onrender.com",
+        "projeto-pedalar.onrender.com",
     ]
 
 # ---------------------------------------------------
