@@ -25,24 +25,34 @@ def voluntario_view(request):
     if request.method == 'POST':
         form = VoluntarioForm(request.POST)
         if form.is_valid():
-            form.save()  
-            return redirect('sucesso') 
+            form.save()
+            return render(request, 'app_main/voluntario.html', {
+                'form': VoluntarioForm(),
+                'success': True
+            })
     else:
         form = VoluntarioForm()
 
-    return render(request, 'voluntario.html', {'form': form})
+    return render(request, 'app_main/voluntario.html', {'form': form})
 
+
+from django.shortcuts import render
+from .forms import ParceiroForm
 
 def parceiro_view(request):
-    if request.method == 'POST':
-        form = ParceiroForm(request.POST)
-        if form.is_valid():
-            form.save() 
-            return redirect('sucesso')
-    else:
-        form = ParceiroForm()
+    form = ParceiroForm(request.POST or None)
+    show_modal = False
+    if request.method == 'POST' and form.is_valid():
+        form.save()
+        show_modal = True
+        form = ParceiroForm()  # reset form
 
-    return render(request, 'parceiro.html', {'form': form})
+    context = {
+        'form': form,
+        'show_modal': show_modal,
+    }
+    return render(request, 'app_main/parceiro.html', context)
+
 
 
 

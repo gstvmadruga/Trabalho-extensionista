@@ -1,105 +1,45 @@
-// script.js (substitua todo o arquivo atual por este)
+
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('[script.js] DOMContentLoaded - versão corrigida');
+  console.log('[script.js] DOMContentLoaded');
 
-  // -------------------
-  // MENU HAMBURGER 
-  // -------------------
+  // ---------- Menu hamburger (mantive seu código) ----------
   const hamburger = document.querySelector('.hamburger');
-  const navMenu = document.querySelector('.nav-menu');    // <nav class="nav-menu">
-  const navLinks = document.querySelector('.nav-links');  // <ul class="nav-links">
-
-  if (hamburger && navMenu && navLinks) {
-    // inicial aria
-    hamburger.setAttribute('aria-expanded', 'false');
-
-    const openMenu = () => {
-      navMenu.classList.add('active');
-      navLinks.classList.add('active');
-      hamburger.classList.add('active');
-      hamburger.setAttribute('aria-expanded', 'true');
-      // opcional: evitar scroll quando menu aberto (comentar se não quiser)
-      document.documentElement.style.overflow = 'hidden';
-    };
-
-    const closeMenu = () => {
-      navMenu.classList.remove('active');
-      navLinks.classList.remove('active');
-      hamburger.classList.remove('active');
-      hamburger.setAttribute('aria-expanded', 'false');
-      document.documentElement.style.overflow = '';
-    };
-
-    hamburger.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (navMenu.classList.contains('active')) closeMenu();
-      else openMenu();
-    });
-
-    // fechar ao clicar em qualquer link do menu (útil em mobile)
-    navLinks.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => closeMenu());
-    });
-
-    // fechar ao clicar fora (quando menu aberto)
-    document.addEventListener('click', (e) => {
-      if (window.innerWidth <= 768 && navMenu.classList.contains('active')) {
-        if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-          closeMenu();
-        }
-      }
-    });
-
-    // fechar ao redimensionar para desktop
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
-        closeMenu();
-      }
-    });
-  } else {
-    console.warn('[script.js] hamburger/nav-menu/nav-links não encontrados no DOM');
+  const navMenu = document.querySelector('.nav-menu');
+  if (hamburger && navMenu) {
+    hamburger.addEventListener('click', () => navMenu.classList.toggle('active'));
   }
 
-  // -------------------
-  // FORMS (mantidos/sem alterações funcionais)
-  // -------------------
+  // ---------- Forms (mantidos) ----------
   const contactForm = document.getElementById('contact-form');
   const formMessage = document.getElementById('form-message');
   if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
-      
+      e.preventDefault();
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
       const message = document.getElementById('message').value.trim();
-      if (formMessage) formMessage.textContent = '';
+      formMessage.textContent = '';
       if (!name || !email || !message) {
-        if (formMessage) {
-          formMessage.textContent = 'Por favor, preencha todos os campos obrigatórios.';
-          formMessage.style.color = 'red';
-        }
+        formMessage.textContent = 'Por favor, preencha todos os campos obrigatórios.';
+        formMessage.style.color = 'red';
       } else {
-        if (formMessage) {
-          formMessage.textContent = 'Mensagem enviada com sucesso! Em breve entraremos em contato.';
-          formMessage.style.color = 'green';
-        }
+        formMessage.textContent = 'Mensagem enviada com sucesso! Em breve entraremos em contato.';
+        formMessage.style.color = 'green';
         contactForm.reset();
       }
     });
   }
-
   const newsletterForm = document.getElementById('newsletter-form');
   if (newsletterForm) {
     newsletterForm.addEventListener('submit', function (e) {
-      
+      e.preventDefault();
       const emailInput = this.querySelector('input[type="email"]');
       if (!emailInput.value.trim()) alert('Por favor, insira um e-mail válido.');
       else { alert('Obrigado por se inscrever!'); newsletterForm.reset(); }
     });
   }
 
-  // -------------------
-  // COUNTERS
-  // -------------------
+  // ---------- Counters (mantido) ----------
   const counters = document.querySelectorAll('.counter');
   if (counters.length) {
     const obs = new IntersectionObserver((entries, o) => {
@@ -128,15 +68,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================
-  // CARROSSEL DE PROJETOS
+  // CARROSSEL DE PROJETOS - ROBUSTO
   // ==========================
-  const container = document.querySelector('.carousel-container');
+  const container = document.querySelector('.carousel-container'); // wrapper (opcional)
   const track = document.querySelector('.carousel-track');
   let slides = Array.from(document.querySelectorAll('.carousel-slide'));
 
   if (!track || slides.length === 0) {
     console.warn('[carousel] .carousel-track ou .carousel-slide não encontrado');
   } else {
+    console.log(`[carousel] encontrado track e ${slides.length} slides`);
+
+    // botões: aceita classes existentes ou cria se não houver
     let prevBtn = document.querySelector('.carousel-prev') || document.querySelector('.carousel-button.prev') || null;
     let nextBtn = document.querySelector('.carousel-next') || document.querySelector('.carousel-button.next') || null;
 
@@ -145,32 +88,37 @@ document.addEventListener('DOMContentLoaded', () => {
         prevBtn = document.createElement('button');
         prevBtn.className = 'carousel-prev';
         prevBtn.setAttribute('aria-label', 'Anterior');
-        prevBtn.innerHTML = '&#10094;';
+        prevBtn.innerHTML = '&#10094;'; // ◀
         (container || track.parentElement).insertBefore(prevBtn, track);
       }
       if (!nextBtn) {
         nextBtn = document.createElement('button');
         nextBtn.className = 'carousel-next';
         nextBtn.setAttribute('aria-label', 'Próximo');
-        nextBtn.innerHTML = '&#10095;';
+        nextBtn.innerHTML = '&#10095;'; // ▶
         (container || track.parentElement).appendChild(nextBtn);
       }
     }
     createNavButtons();
 
+    // estilo básico necessário no track (se ainda não houver)
     track.style.display = 'flex';
     track.style.gap = '0';
     track.style.willChange = 'transform';
 
+    // garantia: cada slide terá flex: 0 0 <width> para evitar que diminuam
     let currentIndex = 0;
     let slideWidth = 0;
 
     function setSlideSizes() {
+      // largura do "viewport" do carrossel: se existir .carousel-container use ela, senão use offsetWidth do parent
       const viewport = container || track.parentElement;
       slideWidth = Math.floor(viewport.offsetWidth);
+      // se quiser que cada slide ocupe 80% e mostrar parte do próximo, ajuste aqui. Estamos usando 100%.
       slides.forEach(slide => {
         slide.style.flex = `0 0 ${slideWidth}px`;
       });
+      // após ajustar tamanhos, reposiciona
       moveTo(currentIndex, false);
     }
 
@@ -182,11 +130,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!animate) track.style.transition = 'none';
       else track.style.transition = 'transform 0.45s cubic-bezier(.22,.9,.36,1)';
       track.style.transform = `translateX(${offset}px)`;
+      // pequeno timeout para reativar transição se for chamado com animate=false
       if (!animate) requestAnimationFrame(() => {
         track.style.transition = 'transform 0.45s cubic-bezier(.22,.9,.36,1)';
       });
     }
 
+    // eventos nos botões
     nextBtn?.addEventListener('click', () => {
       moveTo(Math.min(currentIndex + 1, slides.length - 1));
     });
@@ -194,13 +144,16 @@ document.addEventListener('DOMContentLoaded', () => {
       moveTo(Math.max(currentIndex - 1, 0));
     });
 
+    // teclado (opcional)
     document.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight') moveTo(Math.min(currentIndex + 1, slides.length - 1));
       if (e.key === 'ArrowLeft') moveTo(Math.max(currentIndex - 1, 0));
     });
 
+    // suporte touch / drag
     (function addTouchSupport() {
       let startX = 0;
+      let currentTranslate = 0;
       let isDown = false;
 
       track.addEventListener('pointerdown', (e) => {
@@ -222,11 +175,13 @@ document.addEventListener('DOMContentLoaded', () => {
         isDown = false;
         track.style.cursor = '';
         const dx = e.clientX - startX;
+        // threshold para swipe
         if (dx < -50 && currentIndex < slides.length - 1) currentIndex++;
         if (dx > 50 && currentIndex > 0) currentIndex--;
         moveTo(currentIndex);
       });
 
+      // cancel if pointer leaves window
       window.addEventListener('pointercancel', () => {
         if (!isDown) return;
         isDown = false;
@@ -234,13 +189,17 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     })();
 
+    // resize
     window.addEventListener('resize', () => {
+      // recarrega slides em caso de DOM dinâmico
       slides = Array.from(document.querySelectorAll('.carousel-slide'));
       setTimeout(setSlideSizes, 50);
     });
 
+    // init
     setSlideSizes();
 
+    // criar dots (opcional) - mostra qual index está ativo
     const dotsContainer = document.querySelector('.carousel-dots');
     if (dotsContainer) {
       function renderDots() {
@@ -258,14 +217,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const dots = dotsContainer.querySelectorAll('.dot');
         dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
       }
+      // atualizar active dot sempre que moveTo é chamado (observador simples)
       const origMoveTo = moveTo;
       moveTo = (index, animate = true) => { origMoveTo(index, animate); setTimeout(updateDots, 50); };
       renderDots();
     }
-  } // end carousel
+
+    console.log('[carousel] inicializado com sucesso');
+  } // end if track
 
   // ==========================
-  // DEPOIMENTOS 
+  // Depoimentos e Eventos (mantidos — seu código anterior)
   // ==========================
   const testimonials = document.querySelectorAll('.testimonial-slide');
   if (testimonials.length) {
@@ -281,9 +243,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 5000);
   }
 
-  // ==========================
-  // EVENTOS DINÂMICOS 
-  // ==========================
   const upcomingEventsList = document.getElementById('upcoming-events-list');
   const pastEventsList = document.getElementById('past-events-list');
   if (upcomingEventsList && pastEventsList) {
@@ -307,29 +266,78 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ==========================
-  // VOLUNTÁRIO - MODAL 
-  // ==========================
-  const form = document.getElementById('voluntario-form');
-  const modal = document.getElementById('thankyou-modal');
-  const closeBtn = modal ? modal.querySelector('.close') : null;
-
-  if (form && modal && closeBtn) {
-    form.addEventListener('submit', (e) => {
-      // se você usa submissão do Django real (POST), remova preventDefault aqui. Atualmente mostramos modal no front.
-    
-      modal.style.display = 'flex';
-      form.reset();
-    });
-
-    closeBtn.addEventListener('click', () => {
-      modal.style.display = 'none';
-    });
-
-    window.addEventListener('click', (e) => {
-      if (e.target === modal) modal.style.display = 'none';
-    });
-  }
-
 }); 
+
+document.addEventListener("DOMContentLoaded", function () {
+    // ======= Carrossel =======
+    const track = document.querySelector(".carousel-track");
+    if (track) {
+        const slides = Array.from(track.children);
+        const nextButton = document.querySelector(".next");
+        const prevButton = document.querySelector(".prev");
+
+        let currentSlide = 0;
+
+        function updateSlidePosition() {
+            const slideWidth = slides[0].getBoundingClientRect().width;
+            track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+        }
+
+        nextButton.addEventListener("click", () => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateSlidePosition();
+        });
+
+        prevButton.addEventListener("click", () => {
+            currentSlide =
+                currentSlide === 0 ? slides.length - 1 : currentSlide - 1;
+            updateSlidePosition();
+        });
+
+        window.addEventListener("resize", updateSlidePosition);
+    }
+
+    // ======= Menu Hamburger =======
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    }
+
+    // ======= Formulário de Voluntariado com Modal =======
+ const form = document.getElementById('voluntario-form');
+ const modal = document.getElementById('thankyou-modal');
+ const closeBtn = modal.querySelector('.close'); // seleciona o botão dentro do modal
+
+if (form && modal && closeBtn) {
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Mostrar modal
+        modal.style.display = 'flex'; // flex para centralizar
+
+        // Resetar formulário
+        form.reset();
+    });
+
+    // Fechar modal ao clicar no X
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    // Fechar modal ao clicar fora do conteúdo
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+}
+
+
+
+
+});
+
 
