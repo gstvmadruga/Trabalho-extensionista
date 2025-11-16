@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY
 # ---------------------------------------------------
 SECRET_KEY = 'django-insecure-=g16h!2h!+1d1b6gdz6#n6c)0n#%1t-fdw+b(vgaetdolx2g@%'
-DEBUG = False
+DEBUG = os.environ.get("DEBUG", "False") == "True"
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'projeto-pedalar.onrender.com']
 
 
