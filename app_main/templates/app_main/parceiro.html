@@ -46,16 +46,16 @@
     <!-- Formulário de Parceria -->
      <section class="volunteer-form-container">
     <h2>Junte-se a nós como parceiro</h2>
-    <form id="voluntario-form" method="post">
+    <form id="parceiro-form" method="POST" action="">
         {% csrf_token %}
         {{ form.as_p }}
-
         <button type="submit" class="button">Enviar</button>
     </form>
+
 </section>
 
     <!-- Modal de Agradecimento -->
-<div id="thankyou-modal" class="modal" style="display:none;">
+<div id="thankyou-modal" class="modal" style="display:none;" data-show="{{ show_modal }}">
   <div class="modal-content">
     <span class="close">&times;</span>
     <p>Obrigado por querer nos ajudar! Entraremos em contato em breve.</p>
@@ -104,5 +104,6 @@
     </footer>
 
     <script src="{% static 'app_main/js/script.js' %}"></script>
+    <script src="{% static 'app_main/js/formulario.js' %}"></script>
 </body>
 </html>

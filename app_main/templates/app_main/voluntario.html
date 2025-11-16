@@ -44,15 +44,15 @@
 
     <section class="volunteer-form-container">
     <h2>Junte-se a nós como voluntário</h2>
-    <form id="voluntario-form" method="post">
+    <form id="voluntario-form" method="POST" action="">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="button">Enviar</button>
-    </form>
+    <button type="submit" class="button">Enviar</button>
+</form>
 </section>
 
 <!-- Modal de agradecimento -->
-<div id="thankyou-modal" class="modal" style="display:none;">
+<div id="thankyou-modal" class="modal" style="display:none;" data-show="{{ show_modal }}">
   <div class="modal-content">
     <span class="close">&times;</span>
     <p>Obrigado por se voluntariar! Entraremos em contato em breve.</p>

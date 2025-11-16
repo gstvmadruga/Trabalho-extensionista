@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const formMessage = document.getElementById('form-message');
   if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
-      //e.preventDefault();
+      
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
       const message = document.getElementById('message').value.trim();
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const newsletterForm = document.getElementById('newsletter-form');
   if (newsletterForm) {
     newsletterForm.addEventListener('submit', function (e) {
-      //e.preventDefault();
+      
       const emailInput = this.querySelector('input[type="email"]');
       if (!emailInput.value.trim()) alert('Por favor, insira um e-mail válido.');
       else { alert('Obrigado por se inscrever!'); newsletterForm.reset(); }
@@ -317,7 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (form && modal && closeBtn) {
     form.addEventListener('submit', (e) => {
       // se você usa submissão do Django real (POST), remova preventDefault aqui. Atualmente mostramos modal no front.
-      e.preventDefault();
+    
       modal.style.display = 'flex';
       form.reset();
     });
@@ -333,103 +333,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
 }); 
 
-
-//2.1 — Formulário de Contato — parte JS
-contactForm.addEventListener('submit', async function (e) {
-  //e.preventDefault();
-
-  const data = {
-    nome: document.getElementById('name').value.trim(),
-    email: document.getElementById('email').value.trim(),
-    mensagem: document.getElementById('message').value.trim()
-  };
-
-  const response = await fetch("/api/contato/", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data)
-  });
-
-  const result = await response.json();
-
-  if (result.status === "ok") {
-    formMessage.textContent = "Mensagem enviada com sucesso!";
-    formMessage.style.color = "green";
-    contactForm.reset();
-  }
-});
-
-
-
-//2.2 — Newsletter — parte JS
-newsletterForm.addEventListener("submit", async function (e) {
-  //e.preventDefault();
-
-  const email = this.querySelector("input[type='email']").value.trim();
-
-  const response = await fetch("/api/newsletter/", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email })
-  });
-
-  const result = await response.json();
-
-  if (result.status === "ok") {
-    alert("Inscrição realizada com sucesso!");
-    newsletterForm.reset();
-  }
-});
-
-
-//2.3 — Formulário de Voluntário — parte JS
-form.addEventListener("submit", async (e) => {
-  //e.preventDefault();
-
-  const data = {
-    nome: document.getElementById("nome").value,
-    email: document.getElementById("email").value,
-    telefone: document.getElementById("telefone").value,
-  };
-
-  const response = await fetch("/api/voluntario/", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
-
-  const result = await response.json();
-
-  if (result.status === "ok") {
-    msg.textContent = "Obrigado por se voluntariar!";
-    form.reset();
-  }
-});
-
-
-//2.4 — Formulário de Parceiro — parte JS
-form.addEventListener("submit", async (e) => {
-  //e.preventDefault();
-
-  const data = {
-    nome: document.getElementById("nome").value,
-    email: document.getElementById("email").value,
-    telefone: document.getElementById("telefone").value,
-    empresa: document.getElementById("empresa").value,
-    cnpj: document.getElementById("cnpj").value,
-    mensagem: document.getElementById('message').value,
-  };
-
-  const response = await fetch("/api/parceiro/", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
-
-  const result = await response.json();
-
-  if (result.status === "ok") {
-    msg.textContent = "Obrigado por se tornar parceiro!";
-    form.reset();
-  }
-});

@@ -11,3 +11,6 @@ class ParceiroForm(forms.ModelForm):
     class Meta:
         model = Parceiro
         fields = ['nome', 'email', 'telefone', 'empresa', 'cnpj' ,'mensagem', ]
+        widgets = {
+            'cnpj': forms.TextInput(attrs={'placeholder': '00.000.000/0000-00'}),
+        }

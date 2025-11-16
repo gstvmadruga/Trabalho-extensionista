@@ -16,7 +16,7 @@ class Parceiro(models.Model):
     email = models.EmailField()
     telefone = models.CharField(max_length=20, blank=True)
     empresa = models.CharField(max_length=100, blank=True)
-    cnpj = models.CharField(max_length=18, unique=True)
+    cnpj = models.CharField(max_length=18)
     mensagem = models.TextField(blank=True)
     data_criacao = models.DateTimeField(auto_now_add=True)
 

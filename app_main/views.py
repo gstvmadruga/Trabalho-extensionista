@@ -21,34 +21,29 @@ def contato(request):
     return render(request, 'app_main/contato.html')
 
 
-def voluntario(request):
+def voluntario_view(request):
     if request.method == 'POST':
         form = VoluntarioForm(request.POST)
         if form.is_valid():
-            form.save()
-            return render(request, 'app_main/voluntario.html', {
-                'form': VoluntarioForm(),   # limpa o form
-                'show_modal': True         # ativa o modal
-            })
+            form.save()  
+            return redirect('sucesso') 
     else:
         form = VoluntarioForm()
 
-    return render(request, 'app_main/voluntario.html', {'form': form})
+    return render(request, 'voluntario.html', {'form': form})
 
 
-def parceiro(request):
+def parceiro_view(request):
     if request.method == 'POST':
         form = ParceiroForm(request.POST)
         if form.is_valid():
-            form.save()
-            return render(request, 'app_main/parceiro.html', {
-                'form': ParceiroForm(),
-                'show_modal': True
-            })
+            form.save() 
+            return redirect('sucesso')
     else:
         form = ParceiroForm()
 
-    return render(request, 'app_main/parceiro.html', {'form': form})
+    return render(request, 'parceiro.html', {'form': form})
+
 
 
 def doacao(request):
